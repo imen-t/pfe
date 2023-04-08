@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Project;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    // return User::find(1);
+    return Project::find(1)->with(['files','actions','users'])->get();
 });
 Route::get('/api/form-data/{box_id}', 'form3controller@index');
 Route::post('/api/form-data', 'form3controller@store');
