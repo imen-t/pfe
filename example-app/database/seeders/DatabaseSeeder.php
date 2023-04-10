@@ -9,7 +9,6 @@ use App\Models\File;
 use App\Models\Project;
 use App\Models\ProjectUser;
 use Illuminate\Database\Seeder;
-
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -17,30 +16,30 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        //\App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-        // $project = Project::create([
-        //     'project_type' => 'Strategic Project',
-        //     'title' => 'Project One'
-        // ]);
+        \App\Models\User::factory()->create([
+         'name' => 'Test User',
+            'email' => 'test@example.com',
+         ]);
+         $project = Project::create([
+             'project_type' => 'Strategic Project',
+             'title' => 'Project One'
+         ]);
 
-        // ProjectUser::create([
-        //     'user_id' => 1,
-        //     'project_id' => $project->id
-        // ]);
+         ProjectUser::create([
+             'user_id' => 1,
+             'project_id' => $project->id
+         ]);
 
-        // // Action
-        // Action::create([
-        //     'title' => 'Action One',
-        //     'user_id' => 1,
-        //     'project_id' => $project->id
-        // ]);
+         
+         Action::create([
+            'title' => 'Action One',
+             'user_id' => 1,
+             'project_id' => 1
+        ]);
 
-        // File
+        
         File::create([
             'name' => 'File Two',
             'project_id' => 1

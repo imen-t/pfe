@@ -331,13 +331,12 @@ select option {
       </thead>
       <tbody>
         <tr v-for="(formData, index) in formDatas" :key="formData.id">
-          <td>{{ formData.root_cause }}</td>
-          <td>{{ formData.action }}</td>
+          <td>{{ formData.title }}</td>
           <td>{{ formData.impact }}</td>
           <td>{{ formData.owner }}</td>
           <td>{{ formData.start_date }}</td>
           <td>{{ formData.due_date }}</td>
-          <td>{{ formData.methodology }}</td>
+          <td>{{ formData.is_complex }}</td>
           <td> 
             <button v-on:click="editFormData(index)">Edit</button>
             <button v-on:click="editFormData(index)">Delete</button>
@@ -372,7 +371,7 @@ select option {
           <input type="date" id="childInput4" name="childInput2" v-model="formInput5">
          <br>
          <br>
-         <div class="row" style="display: inline-block ;" >
+         <div class="row" style="display: inline-block ;"  name="is_complexe" >
          <div>
           <input type="checkbox" id="checkbox1" v-model="formInput6">
           <label for="checkbox1">DMAIC</label>
@@ -417,7 +416,6 @@ export default {
       box_id:'',
       formDatas: [],
         show: false,
-        formInput1: '',
         formInput2: '',
         formInput3: '',
         formInput4: '',
@@ -448,7 +446,6 @@ export default {
       submitForm() {
         if (this.currentFormDataIndex === null) {
           axios.post('/api/form-data', {
-            rootCause: this.formInput1,
             action: this.formInput2,
             impact: this.formInput3,
             owner: this.formInput4,
@@ -459,7 +456,6 @@ export default {
           })
           .then(response => {
             this.formDatas.push(response.data);
-            this.formInput1 = '';
             this.formInput2 = '';
             this.formInput3 = '';
             this.formInput4 = '';
@@ -474,18 +470,16 @@ export default {
         } else {
           const formDataId = this.formDatas[this.currentFormDataIndex].id;
           axios.put(`/api/form-data/${formDataId}`, {
-            rootCause: this.formInput1,
-            action: this.formInput2,
+            title: this.formInput2,
             impact: this.formInput3,
             owner: this.formInput4,
-            startDate: this.formInput5,
-            dueDate: this.formInput6,
+            start_date: this.formInput5,
+            due_date: this.formInput6,
             dmaic: this.formInput7,
             justDoIt: this.formInput8,
           })
           .then(response => {
             this.formDatas.splice(this.currentFormDataIndex, 1, response.data);
-            this.formInput1 = '';
             this.formInput2 = '';
             this.formInput3 = '';
             this.formInput4 = '';
@@ -502,12 +496,11 @@ export default {
       },
       editFormData(index) {
         const formData = this.formDatas[index];
-        this.formInput1 = formData.rootCause;
-        this.formInput2 = formData.action;
+        this.formInput2 = formData.title;
         this.formInput3 = formData.impact;
         this.formInput4 = formData.owner;
-        this.formInput5 = formData.startDate;
-        this.formInput6 = formData.dueDate;
+        this.formInput5 = formData.start_date;
+        this.formInput6 = formData.due_date;
         this.formInput7 = formData.dmaic;
         this.formInput8 = formData.justDoIt;
         this.show = true;

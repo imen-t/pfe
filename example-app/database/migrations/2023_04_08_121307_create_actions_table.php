@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('actions', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('impact')->nullable();
             $table->date('due_date')->nullable();
+            $table->date('start_date')->nullable();
             $table->boolean('is_complex')->nullable();
             // Foreign keys
             $table->foreignId('user_id')

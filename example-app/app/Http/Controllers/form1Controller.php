@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\form1model;
+use App\Models\Project;
+use App\Models\File;
+
 
 class form1Controller extends Controller
 {
@@ -11,8 +13,7 @@ class form1Controller extends Controller
 {
     $validatedData = $request->validate([
         'box_id' => 'required',
-        'problem' => 'required|string|max:255',
-        'file' => 'required|mimes:jpeg,png,jpg,pdf|max:2048',
+        'problem_description' => 'required|string|max:255',
         // Add validation rules for other form fields here
     ]);
 
@@ -23,14 +24,14 @@ class form1Controller extends Controller
     // move the file to a storage directory
     $filePath = $file->storeAs('public/uploads', $fileName);
 
-    $formData = new form1model();
+    $formData = new Project();
     $formData->box_id = $validatedData['box_id'];
-    $formData->description = $validatedData['problem'];
-    $formData->commentaire = ['commentaireBackground'];
+    $formData->description = $validatedData['problem_description'];
+    $formData->commentaire = ['commentaire'];
     $formData->file_path = $filePath;
     $formData->save();
 
-    $formData = form1model::where('box_id', $validatedData['box_id'])->select('description', 'commentaireBackground', 'file')
+    $formData = Project::where('box_id', $validatedData['box_id'])->select('description', 'commentaireBackground', 'file')
                                                                      ->first();
 
     return response()->json(['message' => 'Form data submitted successfully']);

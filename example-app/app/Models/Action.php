@@ -14,8 +14,10 @@ class Action extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'title',
         'impact',
         'due_date',
+        'startDate',
         'is_complex',
         'user_id',
         'project_id',
