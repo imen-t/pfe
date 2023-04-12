@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // return view('welcome');
+    return view('welcome');
     // return User::find(1);
-    return Project::with(['files','actions','users'])->get();
+    // return Project::with(['files','actions','users'])->get();
 });
 // Route::get('/api/form-data/{box_id}', 'form3controller@index');
 // Route::post('/api/form-data', 'form3controller@store');
@@ -27,3 +27,7 @@ Route::get('/', function () {
 // Route::delete('/api/form-data/{id}', 'form3controller@destroy');
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
