@@ -19,7 +19,3 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('projects', ProjectController::class);
-
-Route::put('projects/{project}/updateBackground', [ProjectController::class,'updateBackground'])->name('updateBackground');
-Route::put('projects/{project}/updateAnalysis', [ProjectController::class,'updateAnalysis'])->name('updateAnalysis');

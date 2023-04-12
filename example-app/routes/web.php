@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProjectController;
 use App\Models\Project;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,11 @@ Route::get('/', function () {
     // return User::find(1);
     // return Project::with(['files','actions','users'])->get();
 });
+Route::get('/new-project', function () {
+    return view('new-project');
+})->name('new-project');
+
+
 // Route::get('/api/form-data/{box_id}', 'form3controller@index');
 // Route::post('/api/form-data', 'form3controller@store');
 // Route::get('/api/form-data/{id}', 'form3controller@show');
@@ -31,3 +37,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('projects', ProjectController::class);
+
+Route::put('projects/{project}/updateBackground', [ProjectController::class,'updateBackground'])->name('updateBackground');
+Route::put('projects/{project}/updateAnalysis', [ProjectController::class,'updateAnalysis'])->name('updateAnalysis');
