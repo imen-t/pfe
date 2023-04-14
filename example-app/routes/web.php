@@ -40,5 +40,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('projects', ProjectController::class);
 
-Route::put('projects/{project}/updateBackground', [ProjectController::class,'updateBackground'])->name('updateBackground');
-Route::put('projects/{project}/updateAnalysis', [ProjectController::class,'updateAnalysis'])->name('updateAnalysis');
+Route::post('projects/{project}/updateBackground', [ProjectController::class,'updateBackground'])->name('updateBackground');
+Route::post('projects/{project}/updateAnalysis', [ProjectController::class,'updateAnalysis'])->name('updateAnalysis');
+Route::post('projects/{project}/updateInfo', [ProjectController::class,'updateInfo'])->name('updateInfo');

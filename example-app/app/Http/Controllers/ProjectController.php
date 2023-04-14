@@ -74,20 +74,27 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Project $project)
+    public function updateInfo(Request $request, Project $project)
     {
+        // var_dump($request->location);
+        $request->validate([
+            'location' => 'required',
+        ]);
+
         $project->update($request->all());
-        return response()->json(['message' => 'Project updated successfully']);
+        // return response()->json(['message' => 'Project updated successfully']);
+        return redirect()->back();
     }
     /**
      * Update the specified resource in storage.
      */
     public function updateBackground(Request $request, Project $project)
     {
+        // dd($project);
         $request->validate([
             'commentaire' => 'required',
             'problem_description' => 'required|string|max:255',
-            'file' => 'required|mimes:pdf,xlx,csv|max:2048',
+            // 'file' => 'required|mimes:pdf,xlx,csv|max:2048',
         ]);
 
         $project->update($request->all());
@@ -108,7 +115,9 @@ class ProjectController extends Controller
     public function updateAnalysis(Request $request, Project $project)
     {
         $request->validate([
-            'file' => 'required|mimes:pdf,xlx,csv|max:2048',
+            'problem_analysis' => 'required',
+            'conclusion' => 'required',
+            // 'file' => 'required|mimes:pdf,xlx,csv|max:2048',
         ]);
 
         $project->update($request->all());

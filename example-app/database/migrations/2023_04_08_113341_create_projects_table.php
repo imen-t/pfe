@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('conclusion')->nullable();
             $table->string('commentaire')->nullable();
             $table->string('unresolved_issues')->nullable();
+            $table->date('date')->nullable();
             $table->timestamps();
         });
     }
