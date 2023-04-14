@@ -18,7 +18,13 @@ class ProjectController extends Controller
         // return response()->json($projects);
         return view('projects.templates.a3');
     }
-
+/**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('projects.create');
+    }
     /**
      * Store a newly created resource in storage.
      */
@@ -31,7 +37,7 @@ class ProjectController extends Controller
         ]);
 
         $project = Project::create($request->all());
-
+// dd($project );
         // array of users 
         /** 
          * [ {id:1, name:"Ala"} ...]
@@ -56,6 +62,13 @@ class ProjectController extends Controller
         return response()->json($project);
     }
 
+      /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Project $project)
+    {
+        return view('projects.templates.a3', compact('project'));
+    }
 
 
     /**

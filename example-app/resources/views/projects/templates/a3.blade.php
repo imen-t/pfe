@@ -5,12 +5,12 @@
 <div class="col py-3 ">
     <!--  -->
     <div class="row project-detail">
-        <h3 class="text-center">Project details</h3>
+        <h3 class="text-center">{{$project->title}}</h3>
         <div class="col">
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">First</th>
+                        <th scope="col">Location</th>
                         <th scope="col">Last</th>
                         <th scope="col">Handle</th>
                         <th scope="col">Handle</th>
@@ -20,7 +20,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Mark</td>
+                        <td>{{$project->location}}</td>
                         <td>Otto</td>
                         <td>@mdo</td>
                         <td>@mdo</td>
