@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProjectUser;
 use App\Models\Action;
 use Illuminate\Http\Request;
+
 
 class ActionController extends Controller
 {
@@ -12,7 +14,9 @@ class ActionController extends Controller
      */
     public function index()
     {
-        //
+          $actions = Action::all();
+        // return response()->json($projects);
+        return view('projects.templates.a3');
     }
 
     /**
@@ -28,15 +32,39 @@ class ActionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'impact'=> 'required',
+            'due_date'=> 'required',
+            'startDate'=> 'required',
+            'is_complex'=> 'required',
+
+        ]);
+
+        $actions = Action::create($request->all());
+        $actions->save();
+
+        // array of users 
+        /** 
+         * [ {id:1, name:"Ala"} ...]
+         */
+        if ($request->teams) {
+            foreach ($request->teams as $member) {
+                ProjectUser::create([
+                    'user_id' => $member["id"],
+                    'project_id' => $actions->id
+                ]);
+            }
+        }
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Action $action)
+    public function show(Action $actions)
     {
-        //
+        return response()->json($actions);
     }
 
     /**
@@ -46,20 +74,23 @@ class ActionController extends Controller
     {
         //
     }
-
+ 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Action $action)
+    public function update(Request $request, Action $actions)
     {
-        //
+        $actions->update($request->all());
+        return response()->json(['message' => 'Project updated successfully']);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Action $action)
+    public function destroy(Action $actions)
     {
-        //
+        $actions->delete();
+        $actions->users();
+        return response()->json(['message' => 'Actions updated successfully']);
     }
 }

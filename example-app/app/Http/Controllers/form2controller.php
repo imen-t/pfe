@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\form2model;
+use App\Models\Project;
+
 
 class form2controller extends Controller
 {
@@ -14,7 +16,7 @@ class form2controller extends Controller
             'rootcauses'=>'required',
         ]);
     
-        $formData = new form2model();
+        $formData = new Project();
         $formData->box_id = $validatedData['box_id'];
         $formData->field1 = $request->input('rootcauses');
   $formData->field2 = $request->input('DD');
