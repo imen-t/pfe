@@ -16,7 +16,7 @@ class ActionController extends Controller
     {
           $actions = Action::all();
         // return response()->json($projects);
-        return view('projects.templates.a3');
+        return view('projects.templates.dmaic');
     }
 
     /**
@@ -24,7 +24,7 @@ class ActionController extends Controller
      */
     public function create()
     {
-        //
+        return view('projects.create');
     }
 
     /**
@@ -56,7 +56,7 @@ class ActionController extends Controller
                 ]);
             }
         }
-
+       return response()->json(['message' => 'dmaic Project created successfully']);
     }
 
     /**
@@ -72,7 +72,8 @@ class ActionController extends Controller
      */
     public function edit(Action $action)
     {
-        //
+        return view('projects.templates.dmaic', compact('project'));
+        
     }
  
     /**
