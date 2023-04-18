@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ProjectUser;
 use App\Models\Action;
 use Illuminate\Http\Request;
-
 
 class ActionController extends Controller
 {
@@ -14,9 +12,7 @@ class ActionController extends Controller
      */
     public function index()
     {
-          $actions = Action::all();
-        // return response()->json($projects);
-        return view('projects.templates.dmaic');
+        return Action::all();
     }
 
     /**
@@ -24,7 +20,7 @@ class ActionController extends Controller
      */
     public function create()
     {
-        return view('projects.create');
+        //
     }
 
     /**
@@ -32,39 +28,29 @@ class ActionController extends Controller
      */
     public function store(Request $request)
     {
+      
         $request->validate([
             'title' => 'required',
-            'impact'=> 'required',
-            'due_date'=> 'required',
-            'startDate'=> 'required',
-            'is_complex'=> 'required',
+            // 'impact'=> 'required',
+            // 'due_date'=> 'required',
+            // 'startDate'=> 'required',
+            // 'is_complex'=> 'required',
 
         ]);
 
-        $actions = Action::create($request->all());
-        $actions->save();
+        $action = Action::create($request->all());
+        $action->save();
 
-        // array of users 
-        /** 
-         * [ {id:1, name:"Ala"} ...]
-         */
-        if ($request->teams) {
-            foreach ($request->teams as $member) {
-                ProjectUser::create([
-                    'user_id' => $member["id"],
-                    'project_id' => $actions->id
-                ]);
-            }
-        }
-       return response()->json(['message' => 'dmaic Project created successfully']);
+     
+       return response()->json(['message' => 'Action created successfully']);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Action $actions)
+    public function show(Action $action)
     {
-        return response()->json($actions);
+        //
     }
 
     /**
@@ -72,26 +58,22 @@ class ActionController extends Controller
      */
     public function edit(Action $action)
     {
-        return view('projects.templates.dmaic', compact('project'));
-        
+        //
     }
- 
+
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Action $actions)
+    public function update(Request $request, Action $action)
     {
-        $actions->update($request->all());
-        return response()->json(['message' => 'Project updated successfully']);
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Action $actions)
+    public function destroy(Action $action)
     {
-        $actions->delete();
-        $actions->users();
-        return response()->json(['message' => 'Actions updated successfully']);
+        //
     }
 }

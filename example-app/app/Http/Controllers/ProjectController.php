@@ -51,7 +51,8 @@ class ProjectController extends Controller
             }
         }
 
-        return response()->json(['message' => 'Project created successfully']);
+        // return response()->json(['message' => 'Project created successfully']);
+        return redirect()->route('projects.edit', ['project' => $project->id]);
     }
 
     /**

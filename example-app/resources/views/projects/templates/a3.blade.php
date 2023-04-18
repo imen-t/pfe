@@ -102,7 +102,21 @@
     <div class="row project-actions mb-4">
         <h3 class="text-center">Action plan</h3>
         <div class="col">
-            <a class="btn btn-primary"> Add </a>
+          
+            <!-- start Modal -->
+
+ 
+
+<!-- Modal -->
+<example-component></example-component>
+ 
+            <!-- end  Modal -->
+
+
+
+
+
+
 
             <table class="table">
                 <thead>
