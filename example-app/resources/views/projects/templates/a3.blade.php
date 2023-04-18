@@ -102,20 +102,10 @@
     <div class="row project-actions mb-4">
         <h3 class="text-center">Action plan</h3>
         <div class="col">
-          
+
             <!-- start Modal -->
 
- 
-
-<!-- Modal -->
-<example-component></example-component>
- 
-            <!-- end  Modal -->
-
-
-
-
-
+            <example-component :project_id="{{$project->id}}"></example-component>
 
 
             <table class="table">
@@ -130,16 +120,30 @@
                     </tr>
                 </thead>
                 <tbody>
+
+                    @foreach ($project->actions as $action)
                     <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
+                    <form method="POST" action="{{route('actions.update',$action->id)}}">
+                @csrf
+                <td><input name="title" value="{{old('title', $action->title)}}" type="text" class="form-control" id="title" />
+ 
+                        <td>{{$action->impact}}</td>
+                        <td>{{$action->user->name}}</td>
+                        <td>{{$action->due_date}}</td>
+                    </form>
                         <td>
                             <a class="btn btn-warning"> Edit </a>
-                            <a class="btn btn-danger"> Delete </a>
+                            <form method="POST" action="{{ route('actions.destroy', $action->id ) }}">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="btn btn-danger btn-icon">
+                                Delete
+                                </button>
+                            </form>
                         </td>
                     </tr>
+                    @endforeach
+
 
                 </tbody>
             </table>

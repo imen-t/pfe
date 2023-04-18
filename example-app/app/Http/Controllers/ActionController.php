@@ -66,7 +66,7 @@ class ActionController extends Controller
      */
     public function update(Request $request, Action $action)
     {
-        //
+        return 1;
     }
 
     /**
@@ -74,6 +74,8 @@ class ActionController extends Controller
      */
     public function destroy(Action $action)
     {
-        //
+        $action->delete();
+ 
+        return redirect()->back();
     }
 }
