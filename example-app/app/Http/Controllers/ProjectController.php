@@ -133,6 +133,8 @@ class ProjectController extends Controller
         return response()->json($project);
     }
 
+    
+
     /**
      * Remove the specified resource from storage.
      */
