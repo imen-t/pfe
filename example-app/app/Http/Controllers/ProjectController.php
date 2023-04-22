@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\File;
 use App\Models\Project;
 use App\Models\ProjectUser;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -14,11 +15,11 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        // $projects = Project::all();
+        $projects = Project::all();
         // return response()->json($projects);
-        return view('projects.templates.a3');
+        return view('projects.history', compact('projects'));
     }
-/**
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -37,7 +38,7 @@ class ProjectController extends Controller
         ]);
 
         $project = Project::create($request->all());
-// dd($project );
+        // dd($project );
         // array of users 
         /** 
          * [ {id:1, name:"Ala"} ...]
@@ -54,6 +55,25 @@ class ProjectController extends Controller
         // return response()->json(['message' => 'Project created successfully']);
         return redirect()->route('projects.edit', ['project' => $project->id]);
     }
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function addProjectMember(Request $request)
+    {
+        $request->validate([
+            'user_id' => 'required',
+            'project_id' => 'required',
+
+        ]);
+
+        ProjectUser::create([
+            'user_id' => $request->user_id,
+            'project_id' => $request->project_id
+        ]);
+        return redirect()->back();
+        // // return response()->json(['message' => 'Project created successfully']);
+        // return redirect()->route('projects.edit', ['project' => $project->id]);
+    }
 
     /**
      * Display the specified resource.
@@ -63,7 +83,7 @@ class ProjectController extends Controller
         return response()->json($project);
     }
 
-      /**
+    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Project $project)
@@ -134,7 +154,12 @@ class ProjectController extends Controller
         return response()->json($project);
     }
 
-    
+    public function deleteUser(Project $project, User $user)
+    {
+        // $projectUser = ProjectUser::where(['project_id' => $project->id])->where(['user_id' => $user->id])->first();
+        $project->users()->detach($user->id);
+        return redirect()->back();
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -143,7 +168,7 @@ class ProjectController extends Controller
     {
         $project->delete();
         $project->users();
-
-        return response()->json(['message' => 'Project deletted successfully']);
+        return redirect()->back();
+        // return response()->json(['message' => 'Project deletted successfully']);
     }
 }

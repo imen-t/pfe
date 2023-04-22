@@ -219,7 +219,7 @@
                
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item nav-link" >
-                        <a href="#" class="nav-link align-middle px-0">
+                        <a href="{{route('home')}}" class="nav-link align-middle px-0">
                         <i class='bx bxs-home'></i><span class="ms-1 d-none d-sm-inline">Home</span>
                         </a>
                     </li>
@@ -228,7 +228,7 @@
                         <i class='bx bxs-dashboard' ></i><span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#" class="nav-link px-0 align-middle">
+                        <a href="{{route('projects.index')}}" class="nav-link px-0 align-middle">
                         <i class='bx bx-list-check' ></i> <span class="ms-1 d-none d-sm-inline">Projects</span></a>
                     </li>
                     <li class="nav-link">

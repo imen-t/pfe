@@ -4,7 +4,7 @@
         <form action="" @submit.prevent="submitForm()">
             <label for="title" class="form-label">Title</label>
             <input v-model="actionForm.title" id="title" class="swal2-input" />
-            <label for="country">Country:</label>
+            <label for="country">Owner:</label>
             <select
                 v-model="actionForm.user_id"
                 class="swal2-input"

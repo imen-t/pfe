@@ -47,9 +47,10 @@ Route::resource('projects', ProjectController::class);
 Route::post('projects/{project}/updateBackground', [ProjectController::class,'updateBackground'])->name('updateBackground');
 Route::post('projects/{project}/updateAnalysis', [ProjectController::class,'updateAnalysis'])->name('updateAnalysis');
 Route::post('projects/{project}/updateInfo', [ProjectController::class,'updateInfo'])->name('updateInfo');
+Route::delete('projects/{project}/{user}', [ProjectController::class,'deleteUser'])->name('projects.member.destroy');
 
 /**
  * Project Routes
  */
 Route::resource('actions', ActionController::class);
-// Route::get('actions', [ActionController::class,'index'])->name('actions.index');
+Route::post('actions/{action}/updateAction', [ActionController::class,'updateAction'])->name('actions.updateAction');

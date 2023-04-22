@@ -3,8 +3,8 @@
 @section('content')
 
 <div class="col py-3">
-    
-        <a type="button" class="button-30" href="{{ route('new-project') }}"  style=" display: inline-block;
+
+  <a type="button" class="button-30" href="{{ route('new-project') }}" style=" display: inline-block;
                 outline: 0;
                 border: 0;
                 cursor: pointer;
@@ -18,58 +18,54 @@
                 font-size: 18px;
                 text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
                 transition: box-shadow 0.15s ease,transform 0.15s ease;
-                text-decoration:none"
-                >  +New workspace
-    </a>      
- 
+                text-decoration:none"> +New workspace
+  </a>
+  <!-- Action plan -->
+  <div class="row project-actions mb-4">
+    <h3 class="text-center">My Actions </h3>
+    <div class="col">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Action</th>
+            <th scope="col">Impact</th>
+            <th scope="col">Owner</th>
+            <th scope="col">Due date</th>
+            <th scope="col">Action</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (Auth::user()->actions as $action)
+          <tr>
+
+            <td>{{$action->title}}</td>
+
+            <td>{{$action->impact}}</td>
+            <td>{{$action->user->name}}</td>
+            <td>{{$action->due_date}}</td>
+
+            <td>
+
+              <form method="POST" action="{{ route('actions.destroy', $action->id ) }}">
+                @method('delete')
+                @csrf
+                <button type="submit" class="btn btn-danger btn-icon">
+                  Delete
+                </button>
+              </form>
+            </td>
+          </tr>
+          @endforeach
+
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
 </div>
-<!-- <style>
 
-
-/* CSS */
-.button-30 {
-  align-items: center;
-  appearance: none;
-  background-color: #FCFCFD;
-  border-radius: 4px;
-  border-width: 0;
-  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
-  box-sizing: border-box;
-  color: #36395A;
-  cursor: pointer;
-  display: inline-flex;
-  font-family: "JetBrains Mono",monospace;
-  height: 48px;
-  justify-content: center;
-  line-height: 1;
-  list-style: none;
-  overflow: hidden;
-  padding-left: 16px;
-  padding-right: 16px;
-  position: relative;
-  text-align: left;
-  text-decoration: none;
-  transition: box-shadow .15s,transform .15s;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
-  will-change: box-shadow,transform;
-  font-size: 18px;
-}
-
-.button-30:focus {
-  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-}
-
-.button-30:hover {
-  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-  transform: translateY(-2px);
-}
-
-.button-30:active {
-  box-shadow: #D6D6E7 0 3px 7px inset;
-  transform: translateY(2px);
-}
-</style> -->
 @endsection

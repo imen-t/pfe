@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="col py-3 ">
-    <!--  -->
+    <!-- Details -->
     <div class="row project-detail">
         <h3 class="text-center">{{$project->title}}</h3>
         <div class="col">
@@ -40,6 +40,47 @@
 
                     </tbody>
                 </table>
+            </form>
+        </div>
+    </div>
+    <!-- Teams  -->
+    <div class="row project-detail">
+        <h3 class="text-center">Team Members</h3>
+        <div class="col">
+
+            <add-member :project_id="{{$project->id}}"></add-member>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @forelse ( $project->users as $user)
+                    <tr>
+                        <td> {{ $user->name }}</td>
+                        <td> {{ $user->email }}</td>
+                        <td>
+                            <form method="POST" action="{{ route('projects.member.destroy',['project' => $project->id,'user' => $user->id] ) }}">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="btn btn-danger btn-icon">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+
+                    @empty
+                    <p>No users</p>
+                    @endforelse
+ 
+
+                </tbody>
+            </table>
             </form>
         </div>
     </div>
@@ -109,48 +150,46 @@
 
 
             <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Action</th>
-                        <th scope="col">Impact</th>
-                        <th scope="col">Owner</th>
-                        <th scope="col">Due date</th>
-                        <th scope="col">Action</th>
+        <thead>
+          <tr>
+            <th scope="col">Action</th>
+            <th scope="col">Impact</th>
+            <th scope="col">Owner</th>
+            <th scope="col">Due date</th>
+            <th scope="col">Action</th>
 
-                    </tr>
-                </thead>
-                <tbody>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (Auth::user()->actions as $action)
+          <tr>
 
-                    @foreach ($project->actions as $action)
-                    <tr>
-                    <form method="POST" action="{{route('actions.update',$action->id)}}">
+            <td>{{$action->title}}</td>
+
+            <td>{{$action->impact}}</td>
+            <td>{{$action->user->name}}</td>
+            <td>{{$action->due_date}}</td>
+
+            <td>
+
+              <form method="POST" action="{{ route('actions.destroy', $action->id ) }}">
+                @method('delete')
                 @csrf
-                <td><input name="title" value="{{old('title', $action->title)}}" type="text" class="form-control" id="title" />
- 
-                        <td>{{$action->impact}}</td>
-                        <td>{{$action->user->name}}</td>
-                        <td>{{$action->due_date}}</td>
-                    </form>
-                        <td>
-                            <a class="btn btn-warning"> Edit </a>
-                            <form method="POST" action="{{ route('actions.destroy', $action->id ) }}">
-                                @method('delete')
-                                @csrf
-                                <button type="submit" class="btn btn-danger btn-icon">
-                                Delete
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
+                <button type="submit" class="btn btn-danger btn-icon">
+                  Delete
+                </button>
+              </form>
+            </td>
+          </tr>
+          @endforeach
 
 
-                </tbody>
-            </table>
+        </tbody>
+      </table>
         </div>
     </div>
 
-    <!-- Action plan -->
+    <!-- Results  -->
     <div class="row project-actions">
         <h3 class="text-center">Resulats</h3>
         <div class="col">

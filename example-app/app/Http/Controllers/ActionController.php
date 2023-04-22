@@ -66,7 +66,18 @@ class ActionController extends Controller
      */
     public function update(Request $request, Action $action)
     {
-        return 1;
+     dd($action);
+        // $action->update($request->all());
+        // return response()->json(['message' => 'action updated successfully']);
+    }
+    /**
+     * updateAction the specified resource in storage.
+     */
+    public function updateAction(Request $request, Action $action)
+    {
+        
+        // $action->update($request->all());
+        // return response()->json(['message' => 'action updated successfully']);
     }
 
     /**

@@ -24,3 +24,5 @@ Route::post('storeAction', [ActionController::class, 'store']);
 Route::get('users', function () {
     return response()->json(User::all());
 });
+
+Route::post('addProjectMember', [ProjectController::class, 'addProjectMember']);
