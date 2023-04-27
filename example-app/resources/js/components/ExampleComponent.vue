@@ -14,6 +14,9 @@
                 <option v-for="user in users" :value="user.id">
                     {{ user.name }}
                 </option>
+                <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                </div>
             </select>
             <button class="btn btn-primary" type="submit">submit</button>
         </form>
