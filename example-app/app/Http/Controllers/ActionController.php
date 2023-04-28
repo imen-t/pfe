@@ -41,9 +41,11 @@ class ActionController extends Controller
 
         $action = Action::create($request->all());
         $action->save();
-if ($request->is_complex) {
-    # code...
-}
+        if ($request->is_complex == 1) {
+            //  dd(   $action );
+            // return view('projects.dmaic.create');
+            return redirect()->route('dmaicProjects.create');
+        }
 
         return response()->json(['message' => 'Action created successfully']);
     }

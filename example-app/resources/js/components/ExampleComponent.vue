@@ -68,6 +68,8 @@ export default {
                     is_complex: "",
                     project_id: this.project_id,
                 };
+                window.location.href = "/dmaicProjects/create"
+                // this.$router.push('/dmaicProjects/create');
             });
         },
         // async handle() {

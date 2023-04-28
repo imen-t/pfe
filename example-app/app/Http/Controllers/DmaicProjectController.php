@@ -13,12 +13,16 @@ class DmaicProjectController extends Controller
     public function index()
     {
         $projects = dmaicProject::all();
-        dd($projects);
+        // dd($projects);
   
-        return response()->json($projects);
-        //return view('projects.templates.dmaic', compact('projects'));
+        // return response()->json($projects);
+        return view('projects.templates.dmaic', compact('projects'));
 
 
+    }
+    public function create()
+    {
+        return view('projects.dmaic.create');
     }
 
     /**
