@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Models\ProjectUser;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Notifications\ProjectMemberAddedNotification;
 
 class ProjectController extends Controller
 {
@@ -70,6 +71,14 @@ class ProjectController extends Controller
             'user_id' => $request->user_id,
             'project_id' => $request->project_id
         ]);
+            // Get the project
+        $project = Project::find($request->project_id);
+
+        // Send notification to user
+        
+        $user = User::find($request->user_id);
+        $user->notify(new ProjectMemberAddedNotification($project));
+
         return redirect()->back();
         // // return response()->json(['message' => 'Project created successfully']);
         // return redirect()->route('projects.edit', ['project' => $project->id]);

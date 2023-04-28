@@ -156,6 +156,7 @@
             <th scope="col">Impact</th>
             <th scope="col">Owner</th>
             <th scope="col">Due date</th>
+            <th scope="col">progress</th>
             <th scope="col">Action</th>
 
           </tr>
@@ -165,10 +166,11 @@
           <tr>
 
             <td>{{$action->title}}</td>
-
             <td>{{$action->impact}}</td>
             <td>{{$action->user->name}}</td>
             <td>{{$action->due_date}}</td>
+            <td></td>
+
 
             <td>
 

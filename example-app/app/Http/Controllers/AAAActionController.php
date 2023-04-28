@@ -91,7 +91,7 @@ class ActionController extends Controller
     public function destroy(Action $actions)
     {
         $actions->delete();
-        $actions->users();
+        //$actions->users();
         return response()->json(['message' => 'Actions updated successfully']);
     }
 }
