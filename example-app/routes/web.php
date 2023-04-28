@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ActionController;
+use App\Http\Controllers\DmaicProjectController;
 use App\Http\Controllers\ProjectController;
 use App\Models\Project;
 use App\Models\User;
@@ -54,3 +55,9 @@ Route::delete('projects/{project}/{user}', [ProjectController::class,'deleteUser
  */
 Route::resource('actions', ActionController::class);
 Route::post('actions/{action}/updateAction', [ActionController::class,'updateAction'])->name('actions.updateAction');
+
+/**
+ * Project Routes
+ */
+// Route::resource('dmaic', DmaicProjectController::class);
+ 

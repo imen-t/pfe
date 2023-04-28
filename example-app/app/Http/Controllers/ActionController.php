@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Action;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ActionController extends Controller
@@ -28,21 +29,23 @@ class ActionController extends Controller
      */
     public function store(Request $request)
     {
-      
+
         $request->validate([
             'title' => 'required',
             // 'impact'=> 'required',
             // 'due_date'=> 'required',
             // 'startDate'=> 'required',
-            // 'is_complex'=> 'required',
+            'is_complex' => 'required',
 
         ]);
 
         $action = Action::create($request->all());
         $action->save();
+if ($request->is_complex) {
+    # code...
+}
 
-     
-       return response()->json(['message' => 'Action created successfully']);
+        return response()->json(['message' => 'Action created successfully']);
     }
 
     /**
@@ -50,7 +53,7 @@ class ActionController extends Controller
      */
     public function show(Action $action)
     {
-        //
+        return $action;
     }
 
     /**
@@ -58,7 +61,8 @@ class ActionController extends Controller
      */
     public function edit(Action $action)
     {
-        //
+        $users = User::all();
+        return view('actions.edit', compact('action', 'users'));
     }
 
     /**
@@ -66,18 +70,20 @@ class ActionController extends Controller
      */
     public function update(Request $request, Action $action)
     {
-     dd($action);
-        // $action->update($request->all());
-        // return response()->json(['message' => 'action updated successfully']);
+        //  dd($action);
+        $action->update($request->all());
+        return response()->json(['message' => 'action updated successfully']);
     }
     /**
      * updateAction the specified resource in storage.
      */
     public function updateAction(Request $request, Action $action)
     {
-        
-        // $action->update($request->all());
-        // return response()->json(['message' => 'action updated successfully']);
+        // dd($request->user_id);
+
+        $action->update($request->all());
+
+        return redirect()->route('projects.edit', ['project' => $action->project->id]);
     }
 
     /**
@@ -86,7 +92,7 @@ class ActionController extends Controller
     public function destroy(Action $action)
     {
         $action->delete();
- 
+
         return redirect()->back();
     }
 }

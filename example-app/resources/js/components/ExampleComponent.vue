@@ -14,10 +14,20 @@
                 <option v-for="user in users" :value="user.id">
                     {{ user.name }}
                 </option>
-                <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-                </div>
             </select>
+
+           
+                <input
+                    v-model="actionForm.is_complex"
+                    id="is_complex"
+                    type="checkbox"
+                    class=" swal2-input"
+                    true-value="1"
+                    false-value="0"
+                />
+               
+          
+            <!-- <input v-model="actionForm.is_complex" id="is_complex"  type="checkbox" class="swal2-input" true-value="1" false-value="0" /> -->
             <button class="btn btn-primary" type="submit">submit</button>
         </form>
     </div>
@@ -34,6 +44,7 @@ export default {
             actionForm: {
                 title: "",
                 user_id: "",
+                is_complex: 0,
                 project_id: this.project_id,
             },
         };
@@ -54,6 +65,7 @@ export default {
                 this.actionForm = {
                     title: "",
                     user_id: "",
+                    is_complex: "",
                     project_id: this.project_id,
                 };
             });

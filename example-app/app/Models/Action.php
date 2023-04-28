@@ -13,14 +13,18 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Action extends Model
 {
     use HasFactory;
+ /**
+  * (bool) is_complex if true link to dmaic
+  */
     protected $fillable = [
         'title',
         'impact',
         'due_date',
-        'startDate',
+        'start_date',
         'is_complex',
         'user_id',
         'project_id',
+        'status'
     ];
 
     public function project(): BelongsTo

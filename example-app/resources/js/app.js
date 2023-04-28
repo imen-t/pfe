@@ -22,6 +22,9 @@ app.component('example-component', ExampleComponent);
 import AddMember from './components/AddMember.vue';
 app.component('add-member', AddMember);
 
+import ProgressBar from './components/ProgressBar.vue';
+app.component('progress-bar', ProgressBar);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

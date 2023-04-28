@@ -77,7 +77,7 @@
                     @empty
                     <p>No users</p>
                     @endforelse
- 
+
 
                 </tbody>
             </table>
@@ -150,42 +150,52 @@
 
 
             <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Action</th>
-            <th scope="col">Impact</th>
-            <th scope="col">Owner</th>
-            <th scope="col">Due date</th>
-            <th scope="col">Action</th>
+                <thead>
+                    <tr>
+                        <th scope="col">Complex</th>
+                        <th scope="col">Action</th>
+                        <th scope="col">Impact</th>
+                        <th scope="col">Owner</th>
+                        <th scope="col">Due date</th>
+                        <!-- <th scope="col">Due date</th> -->
+                        <th scope="col">Action</th>
 
-          </tr>
-        </thead>
-        <tbody>
-          @foreach (Auth::user()->actions as $action)
-          <tr>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($project->actions as $action)
+                    <tr>
 
-            <td>{{$action->title}}</td>
+                        <td>
+                            <input id="is_complex" type="checkbox" class=" swal2-input" {{$action->is_complex ? 'checked' : ''}} />
+                        </td>
+                        <td>{{$action->title}}</td>
 
-            <td>{{$action->impact}}</td>
-            <td>{{$action->user->name}}</td>
-            <td>{{$action->due_date}}</td>
+                        <td>{{$action->impact}}</td>
+                        <td>{{$action->user->name}}</td>
+                        <!-- <td>{{$action->due_date}}</td> -->
+                        <td>
+                            <!-- {{$action->created_at}} -->
+                            <progress-bar date="2023-04-18" />
+                        </td>
 
-            <td>
+                        <td>
+                            <a class="btn btn-warning" href="{{ route('actions.edit', $action->id ) }}"> Edit </a>
 
-              <form method="POST" action="{{ route('actions.destroy', $action->id ) }}">
-                @method('delete')
-                @csrf
-                <button type="submit" class="btn btn-danger btn-icon">
-                  Delete
-                </button>
-              </form>
-            </td>
-          </tr>
-          @endforeach
+                            <form method="POST" action="{{ route('actions.destroy', $action->id ) }}">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="btn btn-danger btn-icon">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
 
 
-        </tbody>
-      </table>
+                </tbody>
+            </table>
         </div>
     </div>
 
