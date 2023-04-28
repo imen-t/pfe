@@ -12,7 +12,8 @@ class ResultController extends Controller
      */
     public function index()
     {
-        //
+        $result = result::all();
+        return response()->json($result);
     }
 
     /**

@@ -21,8 +21,8 @@
                 text-decoration:none"> +New workspace
   </a>
   <!-- Action plan -->
-  <div class="row project-actions mb-4">
-    <h3 class="text-center">My Actions </h3>
+  <div class="row project-actions mb-4" style="margin-top:30px">
+    <h3 >TO DO lists </h3>
     <div class="col">
 
       <table class="table">

@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="col py-3">
+<h2 style=" color: #333; font-family: 'Trocchi', serif; font-size: 45px; font-weight: normal; line-height: 48px; "> A3 projects</h2>
 
 
 
