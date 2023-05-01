@@ -82,11 +82,12 @@ Route::resource('results', ResultController::class);
 //     return view('projects/templates/dmaic');
 // });
 
-Route::resource('/dmaicProjects', DmaicProjectController::class);
-Route::get('projects/create-step-one', 'DmaicProjectController@createStepOne')->name('projects.dmaic.create.step.one');
-Route::post('projects/create-step-one', 'DmaicProjectController@postCreateStepOne')->name('projects.dmaic.create.step.one.post');
+Route::resource('/dmaicProjects', DmaicProjectController::class)->except([
+    'create'
+]);
+Route::get('dmaicProjects/create/{id}', [DmaicProjectController::class, 'create'])->name('dmaicProjects.create');
+// Route::get('projects/create-step-one', 'DmaicProjectController@createStepOne')->name('projects.dmaic.create.step.one');
+// Route::post('projects/create-step-one', 'DmaicProjectController@postCreateStepOne')->name('projects.dmaic.create.step.one.post');
 
-Route::get('products/create-step-two', 'ProductController@createStepTwo')->name('products.create.step.two');
-Route::post('products/create-step-two', 'ProductController@postCreateStepTwo')->name('products.create.step.two.post');
-  
-
+// Route::get('products/create-step-two', 'ProductController@createStepTwo')->name('products.create.step.two');
+// Route::post('products/create-step-two', 'ProductController@postCreateStepTwo')->name('products.create.step.two.post');

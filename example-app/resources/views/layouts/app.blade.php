@@ -229,14 +229,11 @@
                     </li>
                     <li class="nav-link">
                         <a href="{{route('projects.index')}}" class="nav-link px-0 align-middle">
-                        <i class='bx bx-list-check' ></i> <span class="ms-1 d-none d-sm-inline">Projects</span></a>
+                        <i class='bx bx-list-check' ></i> <span class="ms-1 d-none d-sm-inline">A3 Projects</span></a>
                     </li>
                     <li class="nav-link">
-                        <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                        <i class='bx bx-history' ></i><span class="ms-1 d-none d-sm-inline">Historic</span></a>
-                        <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                            
-                        </ul>
+                        <a href="{{route('dmaicProjects.index')}}" class="nav-link px-0 align-middle">
+                        <i class='bx bx-list-check' ></i> <span class="ms-1 d-none d-sm-inline">Dmaic Projects</span></a>
                     </li>
                     <li class="nav-link">
                         <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">

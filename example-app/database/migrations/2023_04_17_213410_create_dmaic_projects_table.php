@@ -61,9 +61,14 @@ return new class extends Migration
             $table->string('develop_transition_plan')->nullable();
             $table->string('Handoff_to_process_owner')->nullable();
             $table->string('write_final_report')->nullable();
-
-            $table->timestamps();
-        });
+   // foreign
+   $table->foreignId('action_id')
+   ->constrained('actions')
+   ->onUpdate('cascade')
+   ->onDelete('cascade');
+$table->timestamps();
+});
+Schema::enableForeignKeyConstraints();
     }
 
     /**

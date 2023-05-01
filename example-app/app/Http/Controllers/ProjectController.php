@@ -18,7 +18,7 @@ class ProjectController extends Controller
     {
         $projects = Project::all();
         // return response()->json($projects);
-        return view('projects.history', compact('projects'));
+        return view('projects.a3.list', compact('projects'));
     }
     /**
      * Show the form for creating a new resource.

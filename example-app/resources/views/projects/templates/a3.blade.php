@@ -163,11 +163,12 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @if($project->actions)
                     @foreach ($project->actions as $action)
                     <tr>
 
                         <td>
-                            <input id="is_complex" type="checkbox" class=" swal2-input" {{$action->is_complex ? 'checked' : ''}} />
+                            <input id="is_complex" type="checkbox" class=" swal2-input" {{$action->is_complex ? 'checked' : ''}} disabled/>
                         </td>
                         <td>{{$action->title}}</td>
 
@@ -180,7 +181,12 @@
                         </td>
 
                         <td>
+                            @if($action->is_complex)
+                            <!-- <a class="btn btn-info" href="{{ route('dmaicProjects.edit', $action->id ) }}"> Dmaic </a> -->
+                            <a class="btn btn-info" href="{{ route('dmaicProjects.create', $action->id ) }}"> Dmaic </a>
+                            @endif
                             <a class="btn btn-warning" href="{{ route('actions.edit', $action->id ) }}"> Edit </a>
+
 
                             <form method="POST" action="{{ route('actions.destroy', $action->id ) }}">
                                 @method('delete')
@@ -192,7 +198,7 @@
                         </td>
                     </tr>
                     @endforeach
-
+                    @endif
 
                 </tbody>
             </table>
@@ -203,7 +209,7 @@
     <div class="row project-actions">
         <h3 class="text-center">Results</h3>
         <div class="col">
-        <result-component :project_id="{{$project->id}}"></result-component>
+            <result-component :project_id="{{$project->id}}"></result-component>
             <table class="table">
                 <thead>
                     <tr>
@@ -216,11 +222,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach ($project->results as $result)
+                    @if($project->results)
+                    @forelse ($project->results as $result)
 
                     <tr>
 
-                         <td>{{$result->result_title}}</td>
+                        <td>{{$result->result_title}}</td>
                         <td>{{$result->Month}}</td>
                         <td>{{$result->type}}</td>
                         <td>{{$result->status}}</td>
@@ -240,8 +247,10 @@
                             <a class="btn btn-danger"> Delete </a>
                         </td> -->
                     </tr>
-                    @endforeach
-
+                    @empty
+                    <span class="text-danger">No Things</span>
+                    @endforelse
+                    @endif
 
                 </tbody>
             </table>

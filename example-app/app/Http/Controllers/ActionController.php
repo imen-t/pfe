@@ -44,10 +44,10 @@ class ActionController extends Controller
         if ($request->is_complex == 1) {
             //  dd(   $action );
             // return view('projects.dmaic.create');
-            return redirect()->route('dmaicProjects.create');
+            // return redirect()->route('dmaicProjects.create', $action->id );
         }
-
-        return response()->json(['message' => 'Action created successfully']);
+        return redirect()->back();
+        // return response()->json(['message' => 'Action created successfully']);
     }
 
     /**
