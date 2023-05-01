@@ -22,6 +22,9 @@ app.component('example-component', ExampleComponent);
 import AddMember from './components/AddMember.vue';
 app.component('add-member', AddMember);
 
+import Result from './components/Result.vue';
+app.component('result-component', Result);
+
 import ProgressBar from './components/ProgressBar.vue';
 app.component('progress-bar', ProgressBar);
 

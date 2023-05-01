@@ -29,7 +29,19 @@ class ResultController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'result_title'=> 'required',
+             'Month'=> 'required',
+             'type'=> 'required',
+            'status' => 'required',
+
+        ]);
+
+        $result = result::create($request->all());
+        $result->save();
+       
+
+        return response()->json(['message' => 'result created successfully']);
     }
 
     /**
@@ -37,7 +49,7 @@ class ResultController extends Controller
      */
     public function show(result $result)
     {
-        //
+        return $result;
     }
 
     /**
@@ -51,16 +63,27 @@ class ResultController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, result $result)
+     public function update(Request $request, result $result)
+     {
+         $result->update($request->all());
+         return response()->json(['message' => 'action updated successfully']);
+     }
+     public function updateresult(Request $request, result $result)
     {
-        //
-    }
+    //     // dd($request->user_id);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(result $result)
-    {
-        //
-    }
+         $result->update($request->all());
+
+         return redirect()->route('projects.edit', ['project' => $result->project->id]);
+     }
+
+    // /**
+    //  * Remove the specified resource from storage.
+    //  */
+     public function destroy(result $result)
+     {
+         $result->delete();
+
+         return redirect()->back();
+     }
 }

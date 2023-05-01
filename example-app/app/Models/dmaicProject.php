@@ -11,7 +11,11 @@ class dmaicProject extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'title',
+        'projecttitle',
+        'projectlocation',
+        'dmaic_project_leaders',
+        'project_reviewer',
+        'Enterproj',
         'project_date',
         'identify_the_business_gap',
         'Document_the_process',

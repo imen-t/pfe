@@ -32,9 +32,9 @@ class DmaicProjectController extends Controller
      */
     public function createStepOne(Request $request)
     {
-        $dmaicProjects = $request->session()->get('projects');
+        $projects = $request->session()->get('projects');
   
-        return view('projects.create-step-one',compact('projects'));
+        return view('projects.dmaic.create-step-one',compact('projects'));
     }
 
      /**  
@@ -54,18 +54,18 @@ class DmaicProjectController extends Controller
         ]);
   
         if(empty($request->session()->get('projects'))){
-            $dmaicProjects = new dmaicProject();
-            $dmaicProjects->fill($validatedData);
-            $dmaicProjects->session()->put('projects', $dmaicProjects);
+            $projects = new dmaicProject();
+            $projects->fill($validatedData);
+            $projects->session()->put('projects', $projects);
         }else{
-            $dmaicProjects = $request->session()->get('projects');
-            $dmaicProjects->fill($validatedData);
-            $request->session()->put('projects', $dmaicProjects);
+            $projects = $request->session()->get('projects');
+            $projects->fill($validatedData);
+            $request->session()->put('projects', $projects);
         }
   
-        return redirect()->route('projects.create.step.two');
+        return redirect()->route('projects.dmaic.create.step.two');
     }
- /**
+    /**
      * Show the step One Form for creating a new product.
      *
      * @return \Illuminate\Http\Response
@@ -95,7 +95,8 @@ class DmaicProjectController extends Controller
   
         return redirect()->route('products.create.step.three');
     }
-    /**
+  
+     /**
      * Display the specified resource.
      */
     public function show(dmaicProject $dmaicProject)

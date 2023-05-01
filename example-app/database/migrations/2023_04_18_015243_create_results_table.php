@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('results', function (Blueprint $table) {
             $table->id();
-            $table->string('result')->nullable();; 
+            $table->string('result_title')->nullable();; 
             $table->date('Month')->nullable();; 
             $table->enum('type', ['plan', 'Fcst', 'Act'])->nullable();;
             $table->enum('status-result', ['on targer', 'off target'])->nullable();;

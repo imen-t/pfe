@@ -11,7 +11,7 @@ class result extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'result',
+        'result_title',
         'Month',
         'type',
         'status',

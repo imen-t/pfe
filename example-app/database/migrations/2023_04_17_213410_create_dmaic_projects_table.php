@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('dmaic_projects', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('projecttitle');
+            $table->string('projectlocation')->nullable();
+            $table->string('dmaic_project_leaders')->nullable();
+            $table->string('project_reviewer')->nullable();
+            $table->string('Enterproj')->nullable();
             $table->date('project_date')->nullable();
             $table->string('identify_the_business_gap')->nullable();
             $table->string('Document_the_process')->nullable();

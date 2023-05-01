@@ -10,36 +10,35 @@
                 @csrf
                 <!-- Title -->
                 <div class="mb-3">
-                    <label for="title" class="form-label">Title</label>
-                    <input name="title" type="text" class="form-control" id="title">
+                    <label for="projecttitle" class="form-label">Title</label>
+                    <input name="projecttitle" type="text" class="form-control" id="projecttitle">
                 </div>
                 <!-- location -->
                 <div class="mb-3">
-                    <label for="location" class="form-label">location</label>
-                    <input name="location"  type="text" class="form-control" id="location">
+                    <label for="projectlocation" class="form-label">location</label>
+                    <input name="projectlocation"  type="text" class="form-control" id="projectlocation">
                 </div>
                 <!-- Date -->
                 <div class="mb-3">
-                    <label for="date" class="form-label">date</label>
-                    <input name="date" type="date" class="form-control" id="date">
+                    <label for="project_date" class="form-label">date</label>
+                    <input name="project_date" type="date" class="form-control" id="project_date">
                 </div>
                 <!-- project_leader -->
                 <div class="mb-3">
-                    <label for="project_leader" class="form-label">Project Leader</label>
-                    <input name="project_leader" type="text" class="form-control" id="project_leader">
+                    <label for="dmaic_project_leaders" class="form-label">Project Leader</label>
+                    <input name="dmaic_project_leaders" type="text" class="form-control" id="dmaic_project_leaders">
                 </div>
                 <div class="mb-3">
-                    <label for="name" class="form-label">User Name</label>
-                    <input name="name" type="text" class="form-control" id="name">
-                </div>  
+                    <label for="project_reviewer" class="form-label">project Reviewer</label>
+                    <input name="project_reviewer" type="text" class="form-control" id="project_reviewer">
+                </div>
+                 
+                <div class="mb-3">
+                    <label for="Enterproj" class="form-label">Enterproj</label>
+                    <input name="Enterproj" type="text" class="form-control" id="Enterproj">
+                </div>
                 <!-- project_leader -->
-                <div class="mb-3">
-                    <select name="project_type" class="form-select" aria-label="Default select example">
-                        <option value="Strategic Project" selected> Strategic Project</option>
-                        <option value="Critical Project"> Critical Project</option>
-                        <option value="Issue Resolution"> Issue Resolution</option>
-                    </select>
-                </div>
+                
                 <!-- Title -->
                 <!-- <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
