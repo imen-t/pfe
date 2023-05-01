@@ -201,14 +201,13 @@
 
     <!-- Results  -->
     <div class="row project-actions">
-        <h3 class="text-center">Resulats</h3>
+        <h3 class="text-center">Results</h3>
         <div class="col">
-            <a class="btn btn-primary"> Add </a>
-
+        <result-component :project_id="{{$project->id}}"></result-component>
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Name</th>
+                        <th scope="col">result</th>
                         <th scope="col">Month</th>
                         <th scope="col">Type</th>
                         <th scope="col">Status</th>
@@ -217,8 +216,16 @@
                     </tr>
                 </thead>
                 <tbody>
+                @foreach ($project->results as $result)
+
                     <tr>
-                        <td>Mark</td>
+
+                         <td>{{$result->result_title}}</td>
+                        <td>{{$result->Month}}</td>
+                        <td>{{$result->type}}</td>
+                        <td>{{$result->status}}</td>
+
+                        <!-- <td>Mark</td>
                         <td>Otto</td>
                         <td>
                             <select class="form-select" aria-label="Default select example">
@@ -231,8 +238,10 @@
                         <td>
                             <a class="btn btn-warning"> Edit </a>
                             <a class="btn btn-danger"> Delete </a>
-                        </td>
+                        </td> -->
                     </tr>
+                    @endforeach
+
 
                 </tbody>
             </table>

@@ -77,7 +77,7 @@
     <br>
 <nav>
   <ul class="dmaic-nav">
-    <li><a href="#define">Define</a></li>
+    <li><a href="{{ route('projects.dmaic.create.step.one') }}" class="btn btn-primary pull-right">Define</a></li>
     <li><a href="#measure">Measure</a></li>
     <li><a href="#analyze">Analyze</a></li>
     <li><a href="#improve">Improve</a></li>
