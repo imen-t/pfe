@@ -19,7 +19,7 @@
                 <a type="button" class="btn btn-danger" href="{{ route('dmaicProjects.index') }}"> Cancel
                 </a>
                 <button type="submit" class="btn btn-primary" style="margin-left: 430px;">Submit</button>
-                
+            
 
 
             </form>

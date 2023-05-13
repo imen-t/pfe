@@ -15,6 +15,9 @@
         "vue": "^3.2.37"
     },
     "dependencies": {
+        "@fullcalendar/core": "^6.1.6",
+        "@fullcalendar/daygrid": "^6.1.6",
+        "@fullcalendar/interaction": "^6.1.6",
         "sweetalert2": "^11.7.3",
         "vue-sweetalert2": "^5.0.5"
     }

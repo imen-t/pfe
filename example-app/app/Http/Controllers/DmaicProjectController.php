@@ -46,71 +46,107 @@ class DmaicProjectController extends Controller
         return redirect()->route('dmaicProjects.edit', ['dmaicProject' => $dmaicProject]);
 
     }
-    public function createStepOne(Request $request)
-    {
-        $projects = $request->session()->get('projects');
+    public function updatedefine1(Request $request, dmaicProject $dmaicProject)
 
-        return view('projects.dmaic.create-step-one', compact('projects'));
-    }
-
-    /**  
-     * Post Request to store step1 info in session
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function postCreateStepOne(Request $request)
     {
-        $validatedData = $request->validate([
+        //dd($dmaicProject);
+        $request->validate([
             'identify_the_business_gap' => 'required',
-            'Document_the_process' => 'required|numeric',
-            'colllect_and_transltae' => 'required',
-            'scope_the_project' => 'required',
+           ]);
+
+        $dmaicProject->update($request->all());
+        return response()->json($dmaicProject);
+    }
+
+    public function updatedefine2(Request $request, dmaicProject $dmaicProject)
+    {
+        $request->validate([
+            'Establish_preliminary' => 'required',
 
         ]);
 
-        if (empty($request->session()->get('projects'))) {
-            $projects = new dmaicProject();
-            $projects->fill($validatedData);
-            $projects->session()->put('projects', $projects);
-        } else {
-            $projects = $request->session()->get('projects');
-            $projects->fill($validatedData);
-            $request->session()->put('projects', $projects);
-        }
-
-        return redirect()->route('projects.dmaic.create.step.two');
+        $dmaicProject->update($request->all());
+      
+        return response()->json($dmaicProject);
     }
+    public function updatedefine3(Request $request, dmaicProject $dmaicProject)
+    {
+        $request->validate([
+            'confirm_improvement_methodology' => 'required',
+
+        ]);
+
+        $dmaicProject->update($request->all());
+      
+        return response()->json($dmaicProject);
+    }
+    // public function createStepOne(Request $request)
+    // {s
+    //      $dmaicProject = $request->session()->get('dmaicProject');
+
+
+    //      return view('projects.dmaic.measure.CreateStepOne', compact('dmaicProject'));
+    //  }
+
+    // /**  
+    //  * Post Request to store step1 info in session
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function postCreateStepOne(Request $request)
+    // {
+    //     $validatedData = $request->validate([
+    //         'identify_the_business_gap' => 'required',
+    //         'Document_the_process' => 'required|numeric',
+    //         'colllect_and_transltae' => 'required',
+    //         'scope_the_project' => 'required',
+
+    //     ]);
+
+    //     if (empty($request->session()->get('dmaicProject'))) {
+    //         $dmaicProject = new dmaicProject();
+    //         $dmaicProject->fill($validatedData);
+    //         $dmaicProject->session()->put('dmaicProject', $dmaicProject);
+    //     } else {
+    //         $dmaicProject = $request->session()->get('dmaicProject');
+    //         $dmaicProject->fill($validatedData);
+    //         $request->session()->put('projects', $dmaicProject);
+    //     }
+
+    //     return redirect()->route('products.create.step.two');
+    // } 
     /**
      * Show the step One Form for creating a new product.
      *
      * @return \Illuminate\Http\Response
      */
-    public function createStepTwo(Request $request)
-    {
-        $product = $request->session()->get('product');
+    // public function createStepTwo(Request $request)
+    // {
+    //    $dmaicProject = $request->session()->get('dmaicProject');
 
-        return view('products.create-step-two', compact('product'));
-    }
+    //    return view('projects.dmaic.create-step-two', compact('dmaicProject'));
 
-    /**
-     * Show the step One Form for creating a new product.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function postCreateStepTwo(Request $request)
-    {
-        $validatedData = $request->validate([
-            'stock' => 'required',
-            'status' => 'required',
-        ]);
+    // }
 
-        $product = $request->session()->get('product');
-        $product->fill($validatedData);
-        $request->session()->put('product', $product);
+    // /**
+    //  * Show the step One Form for creating a new product.
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function postCreateStepTwo(Request $request)
+    // {
+    //     $validatedData = $request->validate([
+    //         'stock' => 'required',
+    //         'status' => 'required',
+    //     ]);
 
-        return redirect()->route('products.create.step.three');
-    }
+    //     $product = $request->session()->get('product');
+    //     $product->fill($validatedData);
+    //     $request->session()->put('product', $product);
+
+    //     return redirect()->route('products.create.step.three');
+    // }
 
     /**
      * Display the specified resource.

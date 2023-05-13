@@ -8,6 +8,12 @@ import './bootstrap';
 import { createApp } from 'vue';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+
+
+
+import { Calendar } from '@fullcalendar/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
  * registering components with the application instance so they are ready
@@ -47,3 +53,12 @@ app.component('progress-bar', ProgressBar);
  */
 app.use(VueSweetalert2);
 app.mount('#app');
+
+document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new Calendar(calendarEl, {
+        plugins: [dayGridPlugin, interactionPlugin],
+        // Configure other FullCalendar options here
+    });
+    calendar.render();
+});

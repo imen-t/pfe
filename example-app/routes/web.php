@@ -4,9 +4,12 @@ use App\Http\Controllers\ActionController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\DmaicProjectController;
+use App\Http\Controllers\fullcalanderController;
 use App\Models\Project;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -86,8 +89,18 @@ Route::resource('/dmaicProjects', DmaicProjectController::class)->except([
     'create'
 ]);
 Route::get('dmaicProjects/create/{id}', [DmaicProjectController::class, 'create'])->name('dmaicProjects.create');
-// Route::get('projects/create-step-one', 'DmaicProjectController@createStepOne')->name('projects.dmaic.create.step.one');
-// Route::post('projects/create-step-one', 'DmaicProjectController@postCreateStepOne')->name('projects.dmaic.create.step.one.post');
+Route::post('dmaicProjects/{dmaicProject}/updatedefine1', [DmaicProjectController::class, 'updatedefine1'])->name('updatedefine1');
+Route::post('dmaicProjects/{dmaicProject}/updatedefine2', [DmaicProjectController::class, 'updatedefine2'])->name('updatedefine2');
 
-// Route::get('products/create-step-two', 'ProductController@createStepTwo')->name('products.create.step.two');
-// Route::post('products/create-step-two', 'ProductController@postCreateStepTwo')->name('products.create.step.two.post');
+
+
+// Route::get('dmaicprojects/stepONE', [DmaicProjectController::class, 'createStepOne'])->name('projects.dmaic.measure.CreateStepOne');
+//Route::post('dmaicProjects/{dmaicProject}/postCreateStepOne', [DmaicProjectController::class, 'postCreateStepOne'])->name('postCreateStepOne');
+
+//Route::get('dmaicprojects/create-step-two', [DmaicProjectController::class, 'createStepTwo'])->name('projects.dmaic.create-step-two');
+
+
+//calendar route
+Route::get('calendar', [fullcalanderController::class, 'getEvent'])->name('getEvent');
+ 
+Route::view('/multi','projects.dmaic.measure.CreateStepOne')->name('projects.dmaic.measure.CreateStepOne');

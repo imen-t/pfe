@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('dmaic_projects', function (Blueprint $table) {
             $table->id();
-            $table->string('projecttitle');
+            $table->string('projecttitle') ->nullable();;
             $table->string('projectlocation')->nullable();
             $table->string('dmaic_project_leaders')->nullable();
             $table->string('project_reviewer')->nullable();
@@ -60,7 +60,18 @@ return new class extends Migration
             $table->string('Evaluate_implementation')->nullable();
             $table->string('develop_transition_plan')->nullable();
             $table->string('Handoff_to_process_owner')->nullable();
+            $table->string('capture_lessons_learned')->nullable();
             $table->string('write_final_report')->nullable();
+            $table->string('Revise_develop_process_documentation')->nullable();
+            $table->string('improve_Measurement_systems_if_needed')->nullable();
+            $table->string('upload1')->nullable();
+            $table->string('upload2')->nullable();
+            $table->string('upload3')->nullable();
+            $table->string('upload4')->nullable();
+            $table->string('upload5')->nullable();
+
+
+            
    // foreign
    $table->foreignId('action_id')
    ->constrained('actions')

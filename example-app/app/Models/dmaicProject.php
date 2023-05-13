@@ -35,6 +35,7 @@ class dmaicProject extends Model
         'create_processflow_diagram',
         'expose_simplification_opportunities',
         'analyse_measurememnts_systems',
+        'improve_Measurement_systems_if_needed',
         'collect_data',
         'examine_process_stability',
         'perform_capability_analysis',
@@ -54,13 +55,19 @@ class dmaicProject extends Model
         'Determine_thexs_to_control_and_methods',
         'complete_msa_on_critical_xs',
         'Determine_ys_to_monitor_and_metrics_reporting',
-        'Determine_ys_to_monitor_and_metrics_reporting',
+        'Revise_develop_process_documentation',
         'implement_solution',
         'Evaluate_implementation',
         'develop_transition_plan',
         'Handoff_to_process_owner',
+        'capture_lessons_learned',
         'write_final_report',
-        'action_id'
+        'action_id',
+        'upload1',
+        'upload2',
+        'upload3',
+        'upload4',
+        'upload5',
 
     ];
      /**

@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <form action="{{ route('projects.dmaic.create.step.two.post') }}" method="POST">
+            <form action="{{ route('projects.dmaic.measure.CreateStepOne.post') }}" method="POST">
                 @csrf
   
                 <div class="card">

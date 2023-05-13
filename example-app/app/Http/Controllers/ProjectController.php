@@ -137,7 +137,9 @@ class ProjectController extends Controller
         //     "path" =>  $filePath,
         //     "project_id" => $project->id
         // ]);
-        return response()->json($project);
+       // return response()->json($project);
+       return redirect()->back();
+
     }
     /**
      * Update the specified resource in storage.
