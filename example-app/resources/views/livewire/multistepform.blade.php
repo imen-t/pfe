@@ -10,8 +10,8 @@
            <div class="card-body">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="">create_a_value_stream</label>
-                        <select class="form-control">
+                        <label for="">chooose</label>
+                        <select class="form-control" wire:model="Defect_or_time">
                             <option value="" selected>Primary metric</option>
                             <option value="Defects">Defects</option>
                             <option value="Time">Time </option>
@@ -167,3 +167,5 @@
     </form>
    
 </div>
+@livewireScripts
+@livewireStyles

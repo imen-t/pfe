@@ -7,7 +7,7 @@ use App\Models\dmaicProject;
 use Livewire\Component;
 use Symfony\Contracts\Service\Attribute\Required;
 
-class Multistepform extends Component
+class Multistepform extends \Livewire\Component
 {
     use WithFileUploads;
     public $crete_a_value_stream;

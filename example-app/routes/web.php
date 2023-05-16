@@ -5,10 +5,12 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\DmaicProjectController;
 use App\Http\Controllers\fullcalanderController;
+use App\Http\Controllers\usersController;
 use App\Models\Project;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Livewire\Multistepform;
 
 
 /*
@@ -103,4 +105,24 @@ Route::post('dmaicProjects/{dmaicProject}/updatedefine2', [DmaicProjectControlle
 //calendar route
 Route::get('calendar', [fullcalanderController::class, 'getEvent'])->name('getEvent');
  
-Route::view('/multi','projects.dmaic.measure.CreateStepOne')->name('projects.dmaic.measure.CreateStepOne');
+//Route::view('/multi','projects.dmaic.measure.CreateStepOne')->name('projects.dmaic.measure.CreateStepOne');
+Route::get('/multi', Multistepform::class)->name('multistepform');
+
+
+
+
+//admin
+Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    });
+    Route::group(['namespace' => 'App\Http\Controllers'], function () {
+        Route::resource('users', 'usersController');
+    });
+
+    Route::get('/user', [usersController::class, 'create'])->name('admin.users.create');
+    Route::delete('/user', [usersController::class, 'destroy'])->name('admin.users.destroy');
+    Route::post('/users', [usersController::class, 'store'])->name('users.store');
+    Route::patch('/user/{id}', [usersController::class, 'update'])->name('users.update');
+
+});
