@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Livewire\Multistepform;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -96,18 +97,21 @@ Route::post('dmaicProjects/{dmaicProject}/updatedefine2', [DmaicProjectControlle
 
 
 
-// Route::get('dmaicprojects/stepONE', [DmaicProjectController::class, 'createStepOne'])->name('projects.dmaic.measure.CreateStepOne');
-//Route::post('dmaicProjects/{dmaicProject}/postCreateStepOne', [DmaicProjectController::class, 'postCreateStepOne'])->name('postCreateStepOne');
-
-//Route::get('dmaicprojects/create-step-two', [DmaicProjectController::class, 'createStepTwo'])->name('projects.dmaic.create-step-two');
+Route::get('/measure/{dmaicProject}/step1', [DmaicProjectController::class, 'step1'])->name('measure.step1');
+Route::post('/measure/{dmaicProject}/step1', [DmaicProjectController::class, 'postStep1'])->name('measure.step1.post');
+Route::get('/measure/{dmaicProject}/step2', [DmaicProjectController::class, 'step2'])->name('measure.step2');
+Route::post('/measure/{dmaicProject}/step2', [DmaicProjectController::class, 'postStep2'])->name('measure.step2.post');
+Route::get('/measure/{dmaicProject}/step3', [DmaicProjectController::class, 'step3'])->name('measure.step3');
+Route::post('/measure/{dmaicProject}/step3', [DmaicProjectController::class, 'postStep3'])->name('measure.step3.post');
 
 
 //calendar route
 Route::get('calendar', [fullcalanderController::class, 'getEvent'])->name('getEvent');
  
 //Route::view('/multi','projects.dmaic.measure.CreateStepOne')->name('projects.dmaic.measure.CreateStepOne');
-Route::get('/multi', Multistepform::class)->name('multistepform');
+//Route::livewire('/multi', 'multistepform')->name('projects.dmaic.measure.CreateStepOne');
 
+Route::get('/user', [ProjectController::class, 'search'])->name('search.projects');
 
 
 
@@ -124,5 +128,5 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::delete('/user', [usersController::class, 'destroy'])->name('admin.users.destroy');
     Route::post('/users', [usersController::class, 'store'])->name('users.store');
     Route::patch('/user/{id}', [usersController::class, 'update'])->name('users.update');
-
+ 
 });
