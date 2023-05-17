@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Action;
 use App\Models\dmaicProject;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 
 class DmaicProjectController extends Controller
 {
@@ -80,74 +81,76 @@ class DmaicProjectController extends Controller
       
         return response()->json($dmaicProject);
     }
-    // public function createStepOne(Request $request)
-    // {s
-    //      $dmaicProject = $request->session()->get('dmaicProject');
+    public function step1()
+    {
+        $dmaicProject = dmaicProject::first();
+        return view('measure.step1', compact('dmaicProject'));
+    }
+
+   
+    public function postStep1(Request $request,string $id): RedirectResponse
+    {
+        $validatedData = $request->validate([
+            // Add validation rules for step 3 inputs
+            'crete_a_value_stream' => 'required',
 
 
-    //      return view('projects.dmaic.measure.CreateStepOne', compact('dmaicProject'));
-    //  }
+        ]);
 
-    // /**  
-    //  * Post Request to store step1 info in session
-    //  *
-    //  * @param  \Illuminate\Http\Request  $request
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function postCreateStepOne(Request $request)
-    // {
-    //     $validatedData = $request->validate([
-    //         'identify_the_business_gap' => 'required',
-    //         'Document_the_process' => 'required|numeric',
-    //         'colllect_and_transltae' => 'required',
-    //         'scope_the_project' => 'required',
+        $dmaicProject = dmaicProject::find($id);
+        $input = $request->all();
+        $dmaicProject->update($input);
+        $option = $request->input('option');
 
-    //     ]);
+        if ($option === 'block') {
+            return redirect()->route('measure.step3',['dmaicProject' => $dmaicProject])->withInput();
+        } else {
+            return redirect()->route('measure.step2',['dmaicProject' => $dmaicProject])->withInput();
+        }
+        return redirect()->route('measure.step2', $dmaicProject->id);
+     
+    }
+    public function step2()
+    {
+        $dmaicProject = dmaicProject::first();
+        return view('measure.step2', compact('dmaicProject'));
+    }
 
-    //     if (empty($request->session()->get('dmaicProject'))) {
-    //         $dmaicProject = new dmaicProject();
-    //         $dmaicProject->fill($validatedData);
-    //         $dmaicProject->session()->put('dmaicProject', $dmaicProject);
-    //     } else {
-    //         $dmaicProject = $request->session()->get('dmaicProject');
-    //         $dmaicProject->fill($validatedData);
-    //         $request->session()->put('projects', $dmaicProject);
-    //     }
+    public function postStep2(Request $request,string $id): RedirectResponse
+    {
+        $validatedData = $request->validate([
+            // Add validation rules for step 3 inputs
+            'create_processflow_diagram' => 'required',
 
-    //     return redirect()->route('products.create.step.two');
-    // } 
-    /**
-     * Show the step One Form for creating a new product.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    // public function createStepTwo(Request $request)
-    // {
-    //    $dmaicProject = $request->session()->get('dmaicProject');
+        ]);
 
-    //    return view('projects.dmaic.create-step-two', compact('dmaicProject'));
+        $dmaicProject = dmaicProject::find($id);
+        $input = $request->all();
+        $dmaicProject->update($input);
+        return redirect()->route('measure.step3', $dmaicProject->id);
+    }
+    public function step3()
+    {
+        $dmaicProject = dmaicProject::first();
+        return view('measure.step3', compact('dmaicProject'));
+    }
 
-    // }
+    public function postStep3(Request $request,string $id): RedirectResponse
+    {
+        $validatedData = $request->validate([
+            // Add validation rules for step 3 inputs
+            'analyse_measurememnts_systems' => 'required',
+           
 
-    // /**
-    //  * Show the step One Form for creating a new product.
-    //  *
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function postCreateStepTwo(Request $request)
-    // {
-    //     $validatedData = $request->validate([
-    //         'stock' => 'required',
-    //         'status' => 'required',
-    //     ]);
 
-    //     $product = $request->session()->get('product');
-    //     $product->fill($validatedData);
-    //     $request->session()->put('product', $product);
+        ]);
 
-    //     return redirect()->route('products.create.step.three');
-    // }
-
+        $dmaicProject = dmaicProject::find($id);
+        $input = $request->all();
+        $dmaicProject->update($input);
+        return redirect()->route('measure.step1', $dmaicProject->id);
+     
+    }
     /**
      * Display the specified resource.
      */

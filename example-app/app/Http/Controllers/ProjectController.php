@@ -182,4 +182,20 @@ class ProjectController extends Controller
         return redirect()->back();
         // return response()->json(['message' => 'Project deletted successfully']);
     }
+    public function search(Request $request)
+{
+    
+
+    $projects = Project::where('title', 'LIKE', '%' . $request->search_string. '%')
+        ->orWhere('location', 'LIKE', '%' . $request->search_string . '%')
+        ->orWhere('project_leader', 'LIKE', '%' . $request->search_string . '%')
+        ->orWhere('project_type', 'LIKE', '%' . $request->search_string . '%')
+        ->orWhere('date', 'LIKE', '%' . $request->search_string . '%')
+        ->orderBy('id','desc')
+        ->get();
+
+    return response()->json([
+        'projects' => $projects,
+    ]);
+}
 }

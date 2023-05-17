@@ -109,7 +109,7 @@
                         <li> <a href="{{route('dmaicProjects.index')}}" class="nav-link px-0 align-middle">
                         <i class='bx bx-list-check' ></i> <span class="ms-1 d-none d-sm-inline">Dmaic Projects</span></a></li>
                         <li> <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                        <i class="bx bx-list-check></i> <span class="ms-1 d-none d-sm-inline">oil projects</span> </a></li>
+                        <i class='bx bx-list-check' ></i> <span class="ms-1 d-none d-sm-inline">oil Projects</span></a></li>
                     </ul>
                     </li>
                     <li class="nav-item dropdown">

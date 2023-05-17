@@ -31,6 +31,7 @@ class dmaicProject extends Model
         'identify_project_risks',
         'Establish_project_timeline',
         'create_communication_plan',
+        'option',
         'crete_a_value_stream',
         'create_processflow_diagram',
         'expose_simplification_opportunities',

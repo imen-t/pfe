@@ -100,8 +100,66 @@ class Multistepform extends \Livewire\Component
     
         dmaicProject::create($values);
     
-        $this->reset();
-        $this->currentStep = 1;
+        return redirect()->route('projects.dmaic.measure.CreateStepOne');
     
     }
 }
+
+//////////////////////////////////////////
+namespace App\Http\Controllers;
+
+use App\Models\Project;
+use Illuminate\Http\Request;
+
+class ProjectController extends Controller
+{
+    public function createStepOne(Request $request)
+    {
+        // Validate the form input
+        $validatedData = $request->validate([
+            'problem_description' => 'required',
+            'commentaire' => 'required',
+        ]);
+
+        // Create a new project or update an existing one
+        $project = Project::updateOrCreate(
+            ['id' => $request->input('project_id')],
+            [
+                'problem_description' => $request->input('problem_description'),
+                'commentaire' => $request->input('commentaire'),
+                'step' => 2, // Move to the next step
+            ]
+        );
+
+        // Redirect to the next step
+        return redirect()->route('project.createStepTwo', ['project' => $project]);
+    }
+
+    public function createStepTwo(Request $request, Project $project)
+    {
+        // Display the second step of the form
+        return view('project.stepTwo', compact('project'));
+    }
+
+    public function createStepThree(Request $request, Project $project)
+    {
+        // Update the project with the third step's data
+        $project->update([
+            'field1' => $request->input('field1'),
+            'field2' => $request->input('field2'),
+            'step' => 3, // Move to the next step
+        ]);
+
+        // Redirect to the next step or to the final view
+        if ($request->input('submit') == 'next') {
+            return redirect()->route('project.createStepThree', ['project' => $project]);
+        } else {
+            // Perform any necessary final processing, such as saving to the database
+            $project->save();
+
+            // Display the final view or redirect to a success page
+            return view('project.final', compact('project'));
+        }
+    }
+}
+

@@ -32,6 +32,7 @@ return new class extends Migration
             $table->string('identify_project_risks')->nullable();
             $table->string('Establish_project_timeline')->nullable();
             $table->string('create_communication_plan')->nullable();
+            $table->string('option')->nullable();
             $table->string('crete_a_value_stream')->nullable();
             $table->string('create_processflow_diagram')->nullable();
             $table->string('expose_simplification_opportunities')->nullable();

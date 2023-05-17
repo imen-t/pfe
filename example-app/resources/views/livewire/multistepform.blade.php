@@ -1,5 +1,5 @@
 <div  style="width:700px;height:100%;margin-left:200px;margin-top:100px;" >
-    <form wire:submit.prevent="CreateStepOne" >
+    <form  wire:submit.prevent="CreateStepOne" action="{{ route('projects.dmaic.measure.CreateStepOne') }}" >
     @csrf
     <!-- {{--Step 1--}} -->
          @if ($currentStep == 1)

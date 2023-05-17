@@ -113,85 +113,76 @@
 	</div>
 			<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
             <div class="card-body">
-                      
-                 <a href="{{ route('projects.dmaic.measure.CreateStepOne') }}" class="btn btn-primary pull-right">start measure phase</a>
+             <div style="margin-left:1000px;">         
+            <a href="{{ route('measure.step1',  $dmaicProject->id) }}" class="btn btn-primary ">start measure phase</a>
+            </div>
                  <div class="card">
-                    <div class="card-header">Step 3: Review Details</div>
+                    <div class="card-header" style="background-color:#8ecae6 ;">Step 1: Review Details</div>
    
                     <div class="card-body">
   
                             <table class="table">
                                 <tr>
-                                    <td>Product Name:</td>
+                                    <td>option:</td>
                                     <td><strong></strong></td>
                                 </tr>
                                 <tr>
-                                    <td>Product Amount:</td>
-                                    <td><strong></strong></td>
+                                    <td>create_a_value_stream:</td>
+                                    <td><strong>{{$dmaicProject->crete_a_value_stream}}</strong></td>
+                                </tr>
+                        
+                              
+                            </table>
+                    </div>
+                    
+                </div>
+               
+                <div class="card">
+                    <div class="card-header" style="background-color:#8ecae6 ;">Step 2: Validate measurment systems of outputs</div>
+   
+                    <div class="card-body">
+  
+                            <table class="table">
+                                <tr>
+                                    <td>create_processflow_diagram:</td>
+                                    <td class="table-cell"><strong></strong>{{$dmaicProject->create_processflow_diagram}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Product status:</td>
-                                    <td><strong></strong></td>
-                                </tr>
-                                <tr>
-                                    <td>Product Description:</td>
-                                    <td><strong></strong></td>
+                                    <td>expose_simplification_opportunities:</td>
+                                    <td><strong></strong>{{$dmaicProject->expose_simplification_opportunities}}</td>
                                 </tr>
                               
                             </table>
                     </div>
                     
                 </div>
+
                 <div class="card">
-                    <div class="card-header">Step 3: Review Details</div>
+                    <div class="card-header" style="background-color:#8ecae6 ;">STEP 3/3 - Validate measurment system for outputs</div>
    
                     <div class="card-body">
   
                             <table class="table">
                                 <tr>
-                                    <td>Product Name:</td>
-                                    <td><strong></strong></td>
+                                    <td>analyse_measurememnts_systems :</td>
+                                    <td><strong>{{$dmaicProject->analyse_measurememnts_systems}}</strong></td>
                                 </tr>
                                 <tr>
-                                    <td>Product Amount:</td>
-                                    <td><strong></strong></td>
+                                    <td>improve_Measurement_systems_if_needed:</td>
+                                    <td><strong>{{$dmaicProject->improve_Measurement_systems_if_needed}}</strong></td>
                                 </tr>
                                 <tr>
-                                    <td>Product status:</td>
-                                    <td><strong></strong></td>
+                                    <td>collect_data:</td>
+                                    <td><strong>{{$dmaicProject->collect_data}}</strong></td>
                                 </tr>
                                 <tr>
-                                    <td>Product Description:</td>
-                                    <td><strong></strong></td>
-                                </tr>
-                               
-                            </table>
-                    </div>
-                    
-                </div>
-                <div class="card">
-                    <div class="card-header">Step 3: Review Details</div>
-   
-                    <div class="card-body">
-  
-                            <table class="table">
-                                <tr>
-                                    <td>Product Name:</td>
-                                    <td><strong></strong></td>
+                                    <td>examine_process_stability:</td>
+                                    <td><strong>{{$dmaicProject->examine_process_stability}}</strong></td>
                                 </tr>
                                 <tr>
-                                    <td>Product Amount:</td>
-                                    <td><strong></strong></td>
+                                    <td>perform_capability_analysis:</td>
+                                    <td><strong>{{$dmaicProject->perform_capability_analysis}}</strong></td>
                                 </tr>
-                                <tr>
-                                    <td>Product status:</td>
-                                    <td><strong></strong></td>
-                                </tr>
-                                <tr>
-                                    <td>Product Description:</td>
-                                    <td><strong></strong></td>
-                                </tr>
-                              
                             </table>
                     </div>
                     
@@ -301,5 +292,11 @@
 	</div>
     
 @endsection
-   
+   <style>
+    .table-cell {
+    max-width: max-content; /* Adjust the width as needed */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+   </style>
 
