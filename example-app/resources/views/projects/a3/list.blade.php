@@ -56,7 +56,7 @@
                                 class="btn btn-warning">
                                 Edit
                             </a>
-                        </div>
+                            <div style="display: inline-block;">
                         <div style="display: inline-block;">
                             <form method="POST" action="{{ route('projects.destroy', $project->id) }}">
                                 @method('delete')

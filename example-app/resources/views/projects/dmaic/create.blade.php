@@ -13,6 +13,20 @@
 
                     <label for="projecttitle" class="form-label">Project title</label>
                     <input name="projecttitle" type="text" class="form-control" id="projecttitle">
+
+                    <label for="dmaic_project_leaders" class="form-label">Project leader</label>
+                    <input name="dmaic_project_leaders" type="text" class="form-control" id="dmaic_project_leaders">
+
+                    <label for="projectlocation" class="form-label">Project location</label>
+                    <input name="projectlocation" type="text" class="form-control" id="projectlocation">
+
+                    <label for="project_date" class="form-label">Project date</label>
+                    <input name="project_date" type="date" class="form-control" id="project_date">
+
+                    <label for="Enterproj" class="form-label">Enterproj</label>
+                    <input name="Enterproj" type="text" class="form-control" id="Enterproj">
+                    
+                    
                 </div>
   
 

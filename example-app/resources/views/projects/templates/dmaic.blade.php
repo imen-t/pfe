@@ -5,7 +5,39 @@
 
 
     <div class="card p-3 shadow" style="max-width: 1260px;">
-		<h2 class="text-center p-3">Card with Tabs</h2>
+    <div class="col">
+       <h2>{{$dmaicProject->projecttitle}}</h2>
+<form method="POST" action="{{route('updateInfo',$dmaicProject->id)}}">
+    @csrf
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Location</th>
+                <th scope="col">project leader</th>
+                <th scope="col">Enterproj</th>
+                <th scope="col">Date</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> <input name="projectlocation" value="{{old('projectlocation', $dmaicProject->projectlocation)}}" type="text" class="form-control" id="projectlocation" />
+                </td>
+                <td><input name="dmaic_project_leaders" value="{{old('dmaic_project_leaders', $dmaicProject->dmaic_project_leaders)}}" type="text" class="form-control" id="dmaic_project_leaders" />
+                   
+                    <td><input name="project_date" value="{{old('project_date', $dmaicProject->project_date)}}" type="date" class="form-control" id="project_date" />
+                    <td><input name="Enterproj" value="{{old('Enterproj', $dmaicProject->Enterproj)}}" type="date" class="form-control" id="Enterproj" />
+
+                <td> <button type="submit" class="btn btn-primary">Update</button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</form>
+</div>
+
 		<nav>
 			<div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
 				<button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Define</button>
@@ -16,103 +48,120 @@
 
 			</div>
 		</nav>
-   <div class="tab-content p-3 border bg-light" id="nav-tabContent">
-	<div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-      <div class="row">
-        <div class="col-12 col-md-4 mb-4">
-
-            <div class="card p-4">
-                <h3 class="card-title">Background</h3>
+ 
 
 
-                <form  id="updateForm"method="post" action="{{route('updatedefine1',$dmaicProject->id)}}">
-                @csrf
-                    <div class="mb-3">
-                        <label for="identify_the_business_gap" class="form-label">identify_the_business_gap</label>
-                        <textarea name="identify_the_business_gap" value="{{old('identify_the_business_gap', $dmaicProject->problem_analysis)}}" type="identify_the_business_gap" class="form-control" id="identify_the_business_gap"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="Document_the_process" class="form-label">Document_the_process</label>
-                        <textarea name="Document_the_process" value="" type="Document_the_process" class="form-control" id="Document_the_process"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="colllect_and_transltae" class="form-label">colllect_and_transltae</label>
-                        <textarea name="colllect_and_transltae" value="" type="colllect_and_transltae" class="form-control" id="colllect_and_transltae"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="scope_the_project" class="form-label">scope_the_project</label>
-                        <textarea name="scope_the_project" value="" type="scope_the_project" class="form-control" id="scope_the_project"></textarea>
-                    </div>
 
-                    <button type="submit" class="btn btn-primary">Update</button>
-                </form>
+
+
+
+
+
+
+
+
+
+    <div class="tab-content p-3 border bg-light" id="nav-tabContent">
+    <div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+    <div class="card-body">
+             <div style="margin-left:1000px;">         
+            <a href="{{ route('Define.step1',  $dmaicProject->id) }}" class="btn btn-primary ">start Define phase</a>
             </div>
+                 <div class="card">
+                    <div class="card-header" style="background-color:#8ecae6 ;">Step 1: Review Details</div>
+   
+                    <div class="card-body">
+  
+                            <table class="table">
+                                
+                                <tr>
+                                    <td>identify_the_business_gap:</td>
+                                    <td><strong>{{$dmaicProject->crete_a_value_stream}}</strong></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>Document_the_process:</td>
+                                    <td><strong>{{$dmaicProject->Document_the_process}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>colllect_and_transltae:</td>
+                                    <td><strong>{{$dmaicProject->colllect_and_transltae}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>scope_the_project:</td>
+                                    <td><strong>{{$dmaicProject->scope_the_project}}</strong></td>
+                                </tr>
+                                
+                              
+                            </table>
+                    </div>
+                    
+                </div>
+               
+                <div class="card">
+                    <div class="card-header" style="background-color:#8ecae6 ;">Step 2: Validate measurment systems of outputs</div>
+   
+                    <div class="card-body">
+  
+                            <table class="table">
+                                <tr>
+                                    <td>Define_metrics_and_defects:</td>
+                                    <td class="table-cell"><strong></strong>{{$dmaicProject->Define_metrics_and_defects}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Establish_preliminary:</td>
+                                    <td><strong></strong>{{$dmaicProject->Establish_preliminary}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Dvelop_problem_objective:</td>
+                                    <td class="table-cell"><strong></strong>{{$dmaicProject->Dvelop_problem_objective}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Estimate_financial:</td>
+                                    <td class="table-cell"><strong></strong>{{$dmaicProject->Estimate_financial}}</td>
+                                </tr>
+                              
+                            </table>
+                    </div>
+                    
+                </div>
 
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="card p-4">
-                <h3 class="card-title">Analysis</h3>
+                <div class="card">
+                    <div class="card-header" style="background-color:#8ecae6 ;">STEP 3/3 - Validate measurment system for outputs</div>
+   
+                    <div class="card-body">
+  
+                            <table class="table">
+                                <tr>
+                                    <td>confirm_improvement_methodology :</td>
+                                    <td><strong>{{$dmaicProject->confirm_improvement_methodology}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Define_project_roles:</td>
+                                    <td><strong>{{$dmaicProject->Define_project_roles}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>identify_project_risks:</td>
+                                    <td><strong>{{$dmaicProject->identify_project_risks}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Establish_project_timeline:</td>
+                                    <td><strong>{{$dmaicProject->Establish_project_timeline}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>create_communication_plan:</td>
+                                    <td><strong>{{$dmaicProject->create_communication_plan}}</strong></td>
+                                </tr>
+                            </table>
+                    </div>
+                    
+                </div>
+                </div>
 
-
-                <form method="post" action="{{route('updatedefine2',$dmaicProject->id)}}">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="Define_metrics_and_defects" class="form-label">Define_metrics_and_defects</label>
-                        <textarea name="Define_metrics_and_defects" value="{{old('Define_metrics_and_defects', $dmaicProject->Define_metrics_and_defects)}}"  type="Define_metrics_and_defects" class="form-control" id="Define_metrics_and_defects"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="Establish_preliminary" class="form-label">Establish_preliminary</label>
-                        <textarea name="Establish_preliminary" value="{{old('Establish_preliminary', $dmaicProject->Establish_preliminary)}}" type="Establish_preliminary" class="form-control" id="Establish_preliminary"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="Dvelop_problem_objective" class="form-label">Conclusion</label>
-                        <textarea name="Dvelop_problem_objective" value="" type="Dvelop_problem_objective" class="form-control" id="Dvelop_problem_objective"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="conclusion" class="form-label">Conclusion</label>
-                        <textarea name="conclusion" value="" type="conclusion" class="form-control" id="conclusion"></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Update</button>
-                </form>
-            </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="card p-4">
-                <h3 class="card-title">Create project charter</h3>
-
-
-                <form >
-                    @csrf
-                    <div class="mb-3">
-                        <label for="confirm_improvement_methodology" class="form-label"> confirm_improvement_methodology</label>
-                        <textarea name="confirm_improvement_methodology" value="" type="confirm_improvement_methodology" class="form-control" id="confirm_improvement_methodology"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="Define_project_roles" class="form-label">Define_project_roles</label>
-                        <textarea name="Define_project_roles" value="" type="Define_project_roles" class="form-control" id="Define_project_roles"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="identify_project_risks" class="form-label">identify_project_risks</label>
-                        <textarea name="identify_project_risks" value="" type="identify_project_risks" class="form-control" id="identify_project_risks"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="Establish_project_timeline" class="form-label">Establish_project_timeline</label>
-                        <textarea name="Establish_project_timeline" value="" type="Establish_project_timeline" class="form-control" id="Establish_project_timeline"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="create_communication_plan" class="form-label">create_communication_plan</label>
-                        <textarea name="create_communication_plan" value="" type="create_communication_plan" class="form-control" id="create_communication_plan"></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Update</button>
-                </form>
-            </div>
-        </div>
-     </div>
-	</div>
-			<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-            <div class="card-body">
+                <a href="" class="btn btn-danger " style="margin-left: 600px;margin-top:40px;">champion project checklist</a>
+    </div>
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+    <div class="card-body">
              <div style="margin-left:1000px;">         
             <a href="{{ route('measure.step1',  $dmaicProject->id) }}" class="btn btn-primary ">start measure phase</a>
             </div>
@@ -188,110 +237,250 @@
                     
                 </div>
                 </div>
+    </div>
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+    <div class="card-body">
+             <div style="margin-left:1000px;">         
+            <a href="{{ route('Analyse.step1',  $dmaicProject->id) }}" class="btn btn-primary ">start Analyse phase</a>
+            </div>
+                 <div class="card">
+                    <div class="card-header" style="background-color:#8ecae6 ;">Step 1: identify Potential causes</div>
+   
+                    <div class="card-body">
+  
+                            <table class="table">
+                                
+                                <tr>
+                                    <td>develop_list_of_potential_causes:</td>
+                                    <td><strong>{{$dmaicProject->develop_list_of_potential_causes}}</strong></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>narrow_down_list_of_potential_causes:</td>
+                                    <td><strong>{{$dmaicProject->narrow_down_list_of_potential_causes}}</strong></td>
+                                </tr>
+       
+                                
+                              
+                            </table>
+                    </div>
+                    
+                </div>
+               
+                <div class="card">
+                    <div class="card-header" style="background-color:#8ecae6 ;">Step 2: Validate measurment systems of outputs</div>
+   
+                    <div class="card-body">
+  
+                            <table class="table">
+                                <tr>
+                                    <td>collect_dataon_xs:</td>
+                                    <td class="table-cell"><strong></strong>{{$dmaicProject->collect_dataon_xs}}</td>
+                                </tr>
+                                <tr>
+                                    <td>perform_graphical_analysis:</td>
+                                    <td><strong></strong>{{$dmaicProject->perform_graphical_analysis}}</td>
+                                </tr>
+                                <tr>
+                                    <td>perform_statical_analysis:</td>
+                                    <td class="table-cell"><strong></strong>{{$dmaicProject->perform_statical_analysis}}</td>
+                                </tr>
+                                <tr>
+                                    <td>condact_waste_analysis:</td>
+                                    <td class="table-cell"><strong></strong>{{$dmaicProject->condact_waste_analysis}}</td>
+                                </tr>
+                              
+                            </table>
+                    </div>
+                    
+                </div>
+
+                <div class="card">
+                    <div class="card-header" style="background-color:#8ecae6 ;">STEP 3/3 - Validate measurment system for outputs</div>
+   
+                    <div class="card-body">
+  
+                            <table class="table">
+                                <tr>
+                                    <td>Evaluate_impact_of_the_x_and_y :</td>
+                                    <td><strong>{{$dmaicProject->Evaluate_impact_of_the_x_and_y}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>state_prliminary:</td>
+                                    <td><strong>{{$dmaicProject->state_prliminary}}</strong></td>
+                                </tr>
+                                
+                            </table>
+                    </div>
+                    
+                </div>
+                </div>
 
                 <a href="" class="btn btn-danger " style="margin-left: 600px;margin-top:40px;">champion project checklist</a>
-			</div>
-
-			<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-				
-			</div>
-            <div class="tab-pane fade" id="nav-improve" role="tabpanel" aria-labelledby="nav-improve-tab">
-				<p><strong>This is some placeholder content the Contact tab's associated content.</strong>
-					Clicking another tab will toggle the visibility of this one for the next.
-					The tab JavaScript swaps classes to control the content visibility and styling. You can use it with
-					tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
-			</div>
-            <div class="tab-pane fade" id="nav-control" role="tabpanel" aria-labelledby="nav-control-tab">
-            <div class="row">
-        <div class="col-12 col-md-4 mb-4">
-
-            <div class="card p-4">
-                <h3 class="card-title"> <strong>step1:</strong> Create Control and monitoring plan</h3>
-
-
-                <form  id="updateForm"method="post" action="{{route('updatedefine1',$dmaicProject->id)}}">
-                @csrf
-                    <div class="mb-3">
-                        <label for="Mistake_proof_the_process" class="form-label">Mistake_proof_the_process</label>
-                        <textarea name="Mistake_proof_the_process" value="{{old('Mistake_proof_the_process', $dmaicProject->Mistake_proof_the_process)}}" type="identify_the_business_gap" class="form-control" id="Mistake_proof_the_process"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="Determine_thexs_to_control_and_methods" class="form-label">Determine_thexs_to_control_and_methods</label>
-                        <textarea name="Determine_thexs_to_control_and_methods" value="" type="Determine_thexs_to_control_and_methods" class="form-control" id="Determine_thexs_to_control_and_methods"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="complete_msa_on_critical_xs" class="form-label">complete_msa_on_critical_xs</label>
-                        <textarea name="complete_msa_on_critical_xs" value="" type="complete_msa_on_critical_xs" class="form-control" id="complete_msa_on_critical_xs"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="scope_the_project" class="form-label">Determine_ys_to_monitor_and_metrics_reporting</label>
-                        <textarea name="Determine_ys_to_monitor_and_metrics_reporting" value="" type="Determine_ys_to_monitor_and_metrics_reporting" class="form-control" id="Determine_ys_to_monitor_and_metrics_reporting"></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Update</button>
-                </form>
+    </div>
+    <div class="tab-pane fade" id="nav-improve" role="tabpanel" aria-labelledby="nav-improve-tab">
+    <div class="card-body">
+             <div style="margin-left:1000px;">         
+            <a href="{{ route('improve.step1',  $dmaicProject->id) }}" class="btn btn-primary ">start improve phase</a>
             </div>
-
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="card p-4">
-                <h3 class="card-title"><strong>step2:</strong> implement full scale solution</h3>
-
-
-                <form method="post" action="{{route('updatedefine2',$dmaicProject->id)}}">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="Revise_develop_process_documentation" class="form-label">Revise_develop_process_documentation</label>
-                        <textarea name="Revise_develop_process_documentation" value="{{old('Revise_develop_process_documentation', $dmaicProject->Revise_develop_process_documentation)}}"  type="Revise_develop_process_documentation" class="form-control" id="Revise_develop_process_documentation"></textarea>
+                 <div class="card">
+                    <div class="card-header" style="background-color:#8ecae6 ;">Step 1: Generate potential solutions</div>
+   
+                    <div class="card-body">
+  
+                            <table class="table">
+                                <tr>
+                                    <td>option:</td>
+                                    <td><strong></strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Generate_potential_solutions:</td>
+                                    <td><strong>{{$dmaicProject->Generate_potential_solutions}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Evaluate_potential_solution:</td>
+                                    <td><strong>{{$dmaicProject->create_futur_staste_VSM}}</strong></td>
+                                </tr>
+                        
+                              
+                            </table>
                     </div>
-                    <div class="mb-3">
-                        <label for="implement_solution" class="form-label">implement_solution</label>
-                        <textarea name="implement_solution" value="{{old('implement_solution', $dmaicProject->implement_solution)}}" type="implement_solution" class="form-control" id="implement_solution"></textarea>
+                    
+                </div>
+               
+                <div class="card">
+                    <div class="card-header" style="background-color:#8ecae6 ;">Step 2: select and Test Solutions</div>
+   
+                    <div class="card-body">
+  
+                            <table class="table">
+                                <tr>
+                                    <td>Evaluate_potential_solution:</td>
+                                    <td class="table-cell"><strong></strong>{{$dmaicProject->Evaluate_potential_solution}}</td>
+                                </tr>
+                                <tr>
+                                    <td>state_y_f:</td>
+                                    <td><strong></strong>{{$dmaicProject->state_y_f}}</td>
+                                </tr>
+                              
+                            </table>
                     </div>
-                    <div class="mb-3">
-                        <label for="Evaluate_implementation" class="form-label">Evaluate_implementation</label>
-                        <textarea name="Evaluate_implementation" value="" type="Evaluate_implementation" class="form-control" id="Evaluate_implementation"></textarea>
-                    </div>
-                 
-
-                    <button type="submit" class="btn btn-primary">Update</button>
-                </form>
-            </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="card p-4">
-                <h3 class="card-title"> <strong>step3:</strong> Finalize transition</h3>
-
-
-                <form >
-                    @csrf
-                    <div class="mb-3">
-                        <label for="develop_transition_plan" class="form-label"> develop_transition_plan</label>
-                        <textarea name="develop_transition_plan" value="" type="develop_transition_plan" class="form-control" id="develop_transition_plan"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="Handoff_to_process_owner" class="form-label">Handoff_to_process_owner</label>
-                        <textarea name="Handoff_to_process_owner" value="" type="Handoff_to_process_owner" class="form-control" id="Handoff_to_process_owner"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="capture_lessons_learned" class="form-label">capture_lessons_learned</label>
-                        <textarea name="capture_lessons_learned" value="" type="capture_lessons_learned" class="form-control" id="capture_lessons_learned"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="write_final_report" class="form-label">write_final_report</label>
-                        <textarea name="write_final_report" value="" type="write_final_report" class="form-control" id="write_final_report"></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Update</button>
-                </form>
-            </div>
-        </div>
-     </div>²
+                    
+
+                <div class="card">
+                    <div class="card-header" style="background-color:#8ecae6 ;">STEP 3/3 - Develop implementation plan</div>
+   
+                    <div class="card-body">
+  
+                            <table class="table">
+                                <tr>
+                                    <td>Develop_implementation_plan :</td>
+                                    <td><strong>{{$dmaicProject->Develop_implementation_plan}}</strong></td>
+                                </tr>
+                              
+                            </table>
+                    </div>
+                    
+                </div>
+
 			</div>
-		</div>
-	</div>
+    </div>
+    <div class="tab-pane fade" id="nav-control" role="tabpanel" aria-labelledby="nav-control-tab">
+    <div class="card-body">
+             <div style="margin-left:1000px;">         
+            <a href="{{ route('control.step1',  $dmaicProject->id) }}" class="btn btn-primary ">start control phase</a>
+            </div>
+                 <div class="card">
+                    <div class="card-header" style="background-color:#8ecae6 ;">Step 1: Create Control and monitoring plan</div>
+   
+                    <div class="card-body">
+  
+                            <table class="table">
+                                
+                                <tr>
+                                    <td>Mistake_proof_the_process:</td>
+                                    <td><strong>{{$dmaicProject->Mistake_proof_the_process}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Determine_thexs_to_control_and_methods:</td>
+                                    <td><strong>{{$dmaicProject->Determine_thexs_to_control_and_methods}}</strong></td>
+                                </tr>
+                         
+                                <tr>
+                                    <td>complete_msa_on_critical_xs:</td>
+                                    <td><strong>{{$dmaicProject->complete_msa_on_critical_xs}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Determine_ys_to_monitor_and_metrics_reporting:</td>
+                                    <td><strong>{{$dmaicProject->Determine_ys_to_monitor_and_metrics_reporting}}</strong></td>
+                                </tr>
+                              
+                            </table>
+                    </div>
+                    
+                </div>
+               
+                <div class="card">
+                    <div class="card-header" style="background-color:#8ecae6 ;">Step 2: select and Test Solutions</div>
+   
+                    <div class="card-body">
+  
+                            <table class="table">
+                                <tr>
+                                    <td>Revise_develop_process_documentation:</td>
+                                    <td class="table-cell"><strong></strong>{{$dmaicProject->Revise_develop_process_documentation}}</td>
+                                </tr>
+                                <tr>
+                                    <td>implement_solution:</td>
+                                    <td><strong></strong>{{$dmaicProject->implement_solution}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Evaluate_implementation:</td>
+                                    <td><strong></strong>{{$dmaicProject->Evaluate_implementation}}</td>
+                                </tr>
     
-@endsection
+                                
+                            </table>
+                    </div>
+                    
+                </div>
+
+                <div class="card">
+                    <div class="card-header" style="background-color:#8ecae6 ;">STEP 3/3 - Develop implementation plan</div>
+   
+                    <div class="card-body">
+  
+                            <table class="table">
+                                <tr>
+                                    <td>develop_transition_plan :</td>
+                                    <td><strong>{{$dmaicProject->develop_transition_plan}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Handoff_to_process_owner :</td>
+                                    <td><strong>{{$dmaicProject->Handoff_to_process_owner}}</strong></td>
+                                </tr> <tr>
+                                    <td>Develop_implementation_plan :</td>
+                                    <td><strong>{{$dmaicProject->Develop_implementation_plan}}</strong></td>
+                                </tr> <tr>
+                                    <td>capture_lessons_learned :</td>
+                                    <td><strong>{{$dmaicProject->capture_lessons_learned}}</strong></td>
+                                </tr> <tr>
+                                    <td>write_final_report :</td>
+                                    <td><strong>{{$dmaicProject->write_final_report}}</strong></td>
+                                </tr>
+                              
+                            </table>
+                    </div>
+                    
+                </div>
+          
+			</div>
+    </div>
+</div>
+    
+    @endsection
    <style>
     .table-cell {
     max-width: max-content; /* Adjust the width as needed */

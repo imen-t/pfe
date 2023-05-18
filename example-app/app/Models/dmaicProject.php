@@ -49,6 +49,7 @@ class dmaicProject extends Model
         'Evaluate_impact_of_the_x_and_y',
         'state_prliminary',
         'Generate_potential_solutions',
+        'create_futur_staste_VSM',
         'Evaluate_potential_solution',
         'state_y_f',
         'Develop_implementation_plan',

@@ -91,11 +91,22 @@ Route::resource('results', ResultController::class);
 Route::resource('/dmaicProjects', DmaicProjectController::class)->except([
     'create'
 ]);
-Route::get('dmaicProjects/create/{id}', [DmaicProjectController::class, 'create'])->name('dmaicProjects.create');
-Route::post('dmaicProjects/{dmaicProject}/updatedefine1', [DmaicProjectController::class, 'updatedefine1'])->name('updatedefine1');
-Route::post('dmaicProjects/{dmaicProject}/updatedefine2', [DmaicProjectController::class, 'updatedefine2'])->name('updatedefine2');
+
+Route::get('Define/create/{id}', [DmaicProjectController::class, 'create'])->name('dmaicProjects.create');
 
 
+Route::post('dmaicProjects/{dmaicProject}/updateInfo', [DmaicProjectController::class, 'updateInfo'])->name('updateInfo');
+// Route::delete('dmaicProjects/{dmaicProject}/{user}', [ProjectController::class, 'deleteUser'])->name('dmaicProjects.member.destroy');
+
+//define phase
+Route::get('/Define/{dmaicProject}/step1', [DmaicProjectController::class, 'Definestep1'])->name('Define.step1');
+Route::post('Define/{dmaicProject}/updatedefine1', [DmaicProjectController::class, 'updatedefine1'])->name('updatedefine1');
+Route::get('/Define/{dmaicProject}/step2', [DmaicProjectController::class, 'Definestep2'])->name('Define.step2');
+Route::post('/Define/{dmaicProject}/updatedefine2', [DmaicProjectController::class, 'updatedefine2'])->name('updatedefine2');
+Route::get('/Define/{dmaicProject}/step3', [DmaicProjectController::class, 'Definestep3'])->name('Define.step3');
+Route::post('/Define/{dmaicProject}/updatedefine3', [DmaicProjectController::class, 'updatedefine3'])->name('updatedefine3');
+
+//Measure phase
 
 Route::get('/measure/{dmaicProject}/step1', [DmaicProjectController::class, 'step1'])->name('measure.step1');
 Route::post('/measure/{dmaicProject}/step1', [DmaicProjectController::class, 'postStep1'])->name('measure.step1.post');
@@ -104,6 +115,29 @@ Route::post('/measure/{dmaicProject}/step2', [DmaicProjectController::class, 'po
 Route::get('/measure/{dmaicProject}/step3', [DmaicProjectController::class, 'step3'])->name('measure.step3');
 Route::post('/measure/{dmaicProject}/step3', [DmaicProjectController::class, 'postStep3'])->name('measure.step3.post');
 
+//Analyse phase
+Route::get('/Analyse/{dmaicProject}/step1', [DmaicProjectController::class, 'Analysestep1'])->name('Analyse.step1');
+Route::post('Analyse/{dmaicProject}/updateAnalyse1', [DmaicProjectController::class, 'updateAnalyse1'])->name('updateAnalyse1');
+Route::get('/Analyse/{dmaicProject}/step2', [DmaicProjectController::class, 'Analysestep2'])->name('Analyse.step2');
+Route::post('/Analyse/{dmaicProject}/updateAnalyse2', [DmaicProjectController::class, 'updateAnalyse2'])->name('updateAnalyse2');
+Route::get('/Analyse/{dmaicProject}/step3', [DmaicProjectController::class, 'Analysestep3'])->name('Analyse.step3');
+Route::post('/Analyse/{dmaicProject}/updateAnalyse3', [DmaicProjectController::class, 'updateAnalyse3'])->name('updateAnalyse3');
+
+//improve phase
+Route::get('/improve/{dmaicProject}/step1', [DmaicProjectController::class, 'improve1'])->name('improve.step1');
+Route::post('/improve/{dmaicProject}/updateimprove1', [DmaicProjectController::class, 'updateimprove1'])->name('updateimprove1');
+Route::get('/improve/{dmaicProject}/step2', [DmaicProjectController::class, 'improve2'])->name('improve.step2');
+Route::post('/improve/{dmaicProject}/updateimprove2', [DmaicProjectController::class, 'updateimprove2'])->name('updateimprove2');
+Route::get('/improve/{dmaicProject}/step3', [DmaicProjectController::class, 'improve3'])->name('improve.step3');
+Route::post('/improve/{dmaicProject}/updateimprove3', [DmaicProjectController::class, 'updateimprove3'])->name('updateimprove3');
+
+//Control phase
+Route::get('/control/{dmaicProject}/step1', [DmaicProjectController::class, 'controlstep1'])->name('control.step1');
+Route::post('/control/{dmaicProject}/updateAnalyse1', [DmaicProjectController::class, 'updatecontrol1'])->name('updatecontrol1');
+Route::get('/control/{dmaicProject}/step2', [DmaicProjectController::class, 'controlstep2'])->name('control.step2');
+Route::post('/control/{dmaicProject}/updateAnalyse2', [DmaicProjectController::class, 'updatecontrol2'])->name('updatecontrol2');
+Route::get('/control/{dmaicProject}/step3', [DmaicProjectController::class, 'controlstep3'])->name('control.step3');
+Route::post('/control/{dmaicProject}/updateAnalyse3', [DmaicProjectController::class, 'updatecontrol3'])->name('updatecontrol3');
 
 //calendar route
 Route::get('calendar', [fullcalanderController::class, 'getEvent'])->name('getEvent');

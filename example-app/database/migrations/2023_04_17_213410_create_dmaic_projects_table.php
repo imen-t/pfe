@@ -65,12 +65,14 @@ return new class extends Migration
             $table->string('write_final_report')->nullable();
             $table->string('Revise_develop_process_documentation')->nullable();
             $table->string('improve_Measurement_systems_if_needed')->nullable();
-            $table->string('upload1')->nullable();
+            $table->string('create_futur_staste_VSM')->nullable();
             $table->string('upload2')->nullable();
             $table->string('upload3')->nullable();
             $table->string('upload4')->nullable();
             $table->string('upload5')->nullable();
+            $table->string('upload1')->nullable();
 
+            
 
             
    // foreign

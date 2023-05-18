@@ -23,11 +23,11 @@
   <!-- Action plan -->
   <div class="row project-actions mb-4" style="margin-top:30px">
     <h3 >TO DO lists </h3>
-    <div class="col">
-
-      <table class="table">
-        <thead>
-          <tr>
+    
+    <div class="col-md-12">
+        <table class="table  table-striped">
+                
+          <tr class="table-header">
             <th scope="col">Action</th>
             <th scope="col">Impact</th>
             <th scope="col">Owner</th>
@@ -70,3 +70,13 @@
 
 
 @endsection
+
+<style>
+  .table .table-header{
+            background:#FEC107;
+            color:#333;
+        }
+        .table .table-header .cell{
+            padding:20px;
+        }
+</style>
