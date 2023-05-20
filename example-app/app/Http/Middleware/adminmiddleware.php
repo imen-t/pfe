@@ -20,6 +20,7 @@ class adminmiddleware
         if(Auth::check()){
             if(Auth::user()->role == '1'){
              return $next($request);
+             //return redirect('/admin/dashboard')->with('message','Acess Denied as your not Admin');
             }else{
                  return redirect('/home')->with('message','Acess Denied as your not Admin');
          }

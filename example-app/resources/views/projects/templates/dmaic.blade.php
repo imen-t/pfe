@@ -37,6 +37,46 @@
     </table>
 </form>
 </div>
+<div class="row project-detail">
+        <h3 class="text-center">Team Members</h3>
+        <div class="col">
+
+            <add-member :dmaic_project_id="{{$dmaicProject->id}}"></add-member>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @forelse ( $dmaicProject->users as $user)
+                    <tr>
+                        <td> {{ $user->name }}</td>
+                        <td> {{ $user->email }}</td>
+                        <td>
+                            <form method="POST" action="{{ route('dmaicProject.member.destroy',['dmaicProject' => $dmaicProject->id,'user' => $user->id] ) }}">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="btn btn-danger btn-icon">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+
+                    @empty
+                    <p>No users</p>
+                    @endforelse
+
+
+                </tbody>
+            </table>
+            </form>
+        </div>
+    </div>
 
 		<nav>
 			<div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">

@@ -75,6 +75,7 @@ class dmaicProject extends Model
      /**
      * The users that belong to the role.
      */
+
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);
@@ -95,4 +96,5 @@ class dmaicProject extends Model
     {
         return $this->belongsTo(Action::class);
     }
+    
 }

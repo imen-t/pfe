@@ -148,12 +148,12 @@ Route::get('calendar', [fullcalanderController::class, 'getEvent'])->name('getEv
 Route::get('/user', [ProjectController::class, 'search'])->name('search.projects');
 
 
-
+Route::group(['middleware' => 'auth', 'prefix' => 'user', 'as' => 'user.'], function () {   });
 //admin
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
-    });
+    })->name('admin.dashboard');
     Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::resource('users', 'usersController');
     });

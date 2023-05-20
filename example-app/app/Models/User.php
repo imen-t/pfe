@@ -46,6 +46,10 @@ class User extends Authenticatable
         /**
      * The projects that belong to the user.
      */
+    public function dmaicProjects()
+    {
+        return $this->belongsToMany(dmaicProject::class);
+    }
     public function projects(): BelongsToMany
     {
         return $this->belongsToMany(Project::class);
@@ -57,4 +61,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(Action::class);
     }
+    
 }

@@ -482,7 +482,7 @@ class DmaicProjectController extends Controller
         ]);
     }
 
-    public function updateInfo(Request $request,string $id): RedirectResponse
+    public function updateInfo1(Request $request,string $id): RedirectResponse
     {
         $validatedData = $request->validate([
             // Add validation rules for step 3 inputs
@@ -497,6 +497,47 @@ class DmaicProjectController extends Controller
         $dmaicProject->update($input);
         return redirect()->back();
      
+    }
+    public function deleteUser(dmaicProject $dmaicProject, User $user)
+    {
+        // $projectUser = ProjectUser::where(['project_id' => $project->id])->where(['user_id' => $user->id])->first();
+        $dmaicProject->users()->detach($user->id);
+        return redirect()->back();
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(dmaicProject $dmaicProject)
+    {
+        $dmaicProject->delete();
+        $dmaicProject->users();
+        return redirect()->back();
+        // return response()->json(['message' => 'Project deletted successfully']);
+    }
+    public function addProjectMember(Request $request)
+    {
+        $request->validate([
+            'user_id' => 'required',
+            'project_id' => 'required',
+
+        ]);
+
+        ProjectUser::create([
+            'user_id' => $request->user_id,
+            'project_id' => $request->project_id
+        ]);
+            // Get the project
+        $dmaicProject = dmaicProject::find($request->project_id);
+
+        // Send notification to user
+        
+        $user = User::find($request->user_id);
+        $user->notify(new ProjectMemberAddedNotification($dmaicProject));
+
+        return redirect()->back();
+        // // return response()->json(['message' => 'Project created successfully']);
+        // return redirect()->route('projects.edit', ['project' => $project->id]);
     }
     
        
