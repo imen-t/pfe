@@ -9,8 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Notifications\ProjectMemberAddedNotification;
 use App\Models\ProjectUser;
-
-
+use Illuminate\Support\Facades\DB;
 
 class DmaicProjectController extends Controller
 {
@@ -519,16 +518,16 @@ class DmaicProjectController extends Controller
     {
         $request->validate([
             'user_id' => 'required',
-            'project_id' => 'required',
+            'dmaic_project_id' => 'required',
 
         ]);
 
-        ProjectUser::create([
+        DB::table('dmaic_project_user')->create([
             'user_id' => $request->user_id,
-            'project_id' => $request->project_id
+            'dmaic_project_id' => $request->dmaic_project_id
         ]);
             // Get the project
-        $dmaicProject = dmaicProject::find($request->project_id);
+        $dmaicProject = dmaicProject::find($request->dmaic_project_id);
 
         // Send notification to user
         
