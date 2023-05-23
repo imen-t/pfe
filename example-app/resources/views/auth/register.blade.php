@@ -1,11 +1,16 @@
 @extends('layouts.default')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+<div class="container" style="margin-top: 70px;">
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          class="img-fluid" alt="Sample image">
+      </div>
+      <div class="col-md-8 col-lg-4 col-xl-4 offset-xl-1">
+
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -73,5 +78,6 @@
             </div>
         </div>
     </div>
+</section>
 </div>
 @endsection
