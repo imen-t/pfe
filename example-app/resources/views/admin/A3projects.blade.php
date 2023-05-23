@@ -1,9 +1,13 @@
 @extends('admin.defaultadmin')
+
 @section('content')
 
 <div class="col py-3">
-<h2 style=" color: #333; font-family: 'Trocchi', serif; font-size: 45px; font-weight: normal; line-height: 48px; "> Damic projects</h2>
-<div class="container table-responsive py-5">
+    <h2 style="color: #333; font-family: 'Trocchi', serif; font-size: 45px; font-weight: normal; line-height: 48px;">
+        A3 projects
+    </h2>
+
+    <div class="container table-responsive py-5">
     <div style="display: flex; align-items: center; justify-content: space-between;">
         <div class="mb-3" style="display: flex; align-items: center;">
             <label for="entries" style="margin-right: 5px;">Show</label>
@@ -25,56 +29,53 @@
     </div>
 
 
-
-    <table id="projectsTable" class="table table-bordered table-hover">
-        <thead style="background-color: #FBA51A;">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Title</th>
-                <th scope="col">Location</th>
-                <th scope="col">project leader</th>
-                <th scope="col">Date</th>
-                <th scope="col">Action</th>
-
-            </tr>
-        </thead>
-        <tbody>
-
-            @forelse ($projects as $project)
-            <tr>
-                <td>{{ $project->id }}</td>
-                <td> {{ $project->projecttitle }}</td>
-                <td> {{ $project->projectlocation }}</td>
-                <td> {{ $project->dmaic_project_leaders }}</td>
-                <td> {{ $project->project_date }}</td>
-                <td>
-                <div style="display: inline-block;">
-                   <a type="submit" href="{{route('dmaicProjects.edit',$project->id)}}" class="btn btn-warning">
-                        Edit
-                    </a>
-                    <div style="display: inline-block;">
-                    <div style="display: inline-block;">
-                    <form method="POST" action="{{ route('dmaicProjects.destroy',$project->id ) }}">
-                        @method('delete')
-                        @csrf
-                        <button type="submit" class="btn btn-danger btn-icon">
-                            Delete
-                        </button>
-                    </form>
-                    </div>
-                </td>
-            </tr>
-
-            @empty
-            <p>No History</p>
-            @endforelse
-
-
-
-        </tbody>
-    </table>
+        <table id="projectsTable" class="table table-bordered table-hover">
+            <thead style="background-color: #FBA51A;">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Project Leader</th>
+                    <th scope="col">Project Type</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($projects as $project)
+                <tr>
+                    <td>{{ $project->id }}</td>
+                    <td>{{ $project->title }}</td>
+                    <td>{{ $project->location }}</td>
+                    <td>{{ $project->project_leader }}</td>
+                    <td>{{ $project->project_type }}</td>
+                    <td>{{ $project->date }}</td>
+                    <td>
+                        <div style="display: inline-block;">
+                            <a type="submit" href="{{ route('projects.edit', $project->id) }}"
+                                class="btn btn-warning">
+                                Edit
+                            </a>
+                            <div style="display: inline-block;">
+                        <div style="display: inline-block;">
+                            <form method="POST" action="{{ route('projects.destroy', $project->id) }}">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="btn btn-danger btn-icon">
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                @empty
+                <p>No History</p>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
 </div>
-@endsection
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
@@ -101,21 +102,22 @@ $(document).ready(function() {
 
         // Show rows that match the search string
         rows.each(function() {
-            var projecttitle = $(this).find('td:nth-child(2)').text().toLowerCase(); // Get the title column text
-            var projectlocation = $(this).find('td:nth-child(3)').text().toLowerCase(); // Get the location column text
-            var dmaic_project_leaders = $(this).find('td:nth-child(4)').text().toLowerCase(); // Get the project leader column text
-            var project_date = $(this).find('td:nth-child(6)').text().toLowerCase(); // Get the due date column text
+            var title = $(this).find('td:nth-child(2)').text().toLowerCase(); // Get the title column text
+            var location = $(this).find('td:nth-child(3)').text().toLowerCase(); // Get the location column text
+            var projectLeader = $(this).find('td:nth-child(4)').text().toLowerCase(); // Get the project leader column text
+            var dueDate = $(this).find('td:nth-child(6)').text().toLowerCase(); // Get the due date column text
 
             if (
-                projecttitle.includes(search_string) ||
-                projectlocation.includes(search_string) ||
-                dmaic_project_leaders.includes(search_string) ||
-                project_date.includes(search_string)
+                title.includes(search_string) ||
+                location.includes(search_string) ||
+                projectLeader.includes(search_string) ||
+                dueDate.includes(search_string)
             ) {
                 $(this).show();
             }
         });
     });
 });
-
+Th
 </script>
+@endsection
