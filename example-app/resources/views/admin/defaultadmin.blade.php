@@ -88,43 +88,27 @@
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                    <li class="nav-item nav-link" >
-                        <a href="{{route('home')}}" class="nav-link align-middle px-0">
-                        <i class='bx bxs-home'></i><span class="ms-1 d-none d-sm-inline">Home</span>
-                        </a>
+                    
+                    <li class="nav-link">
+                        <a href="dashboard"  class="nav-link px-0 align-middle">
+                        <i class='bx bxs-dashboard' ></i><span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
                     </li>
                     <li class="nav-link">
-                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                        <i class='bx bxs-dashboard' ></i><span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
+                        <a href="{{route('projects.index')}}"  class="nav-link px-0 align-middle">
+                        <i class='bx bxs-dashboard' ></i><span class="ms-1 d-none d-sm-inline">A3 Projects</span> </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{{route('dmaicProjects.index')}}"  class="nav-link px-0 align-middle">
+                        <i class='bx bxs-dashboard' ></i><span class="ms-1 d-none d-sm-inline">Dmaic Projects</span> </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{{route('users.index')}}"  class="nav-link px-0 align-middle">
+                        <i class='bx bxs-dashboard' ></i><span class="ms-1 d-none d-sm-inline">Users</span> </a>
                     </li>
                    
     
-                    <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                        <li><a href="{{route('projects.index')}}" class="nav-link px-0 align-middle">
-                        <i class='bx bx-list-check' ></i> <span class="ms-1 d-none d-sm-inline">A3 Projects</span></a></li>
-                        <li> <a href="{{route('dmaicProjects.index')}}" class="nav-link px-0 align-middle">
-                        <i class='bx bx-list-check' ></i> <span class="ms-1 d-none d-sm-inline">Dmaic Projects</span></a></li>
-                        <li> <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                        <i class='bx bx-list-check' ></i> <span class="ms-1 d-none d-sm-inline">oil Projects</span></a></li>
-                    </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        authenticate
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                        <li><a href="{{route('users.index')}}" class="nav-link px-0 align-middle">
-                        <i class='bx bx-user-check' ></i> <span class="ms-1 d-none d-sm-inline">Users</span></a></li>
-                        <li> <a href="{{route('dmaicProjects.index')}}" class="nav-link px-0 align-middle">
-                        <i class='bx bx-list-check' ></i> <span class="ms-1 d-none d-sm-inline">Roles</span></a></li>
-                        <li> <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                        <i class="bx bx-user-check"></i> <span class="ms-1 d-none d-sm-inline">permissions</span> </a></li>
-                    </ul>
-                    </li>
+                   
+                   
                 
              
                   
@@ -133,7 +117,7 @@
                 <div class="dropdown pb-4">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                        <span class="d-none d-sm-inline mx-1">mee</span>
+                        <span class="d-none d-sm-inline mx-1">  {{ Auth::user()->name }}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                         <li><a class="dropdown-item" href="#">New project...</a></li>

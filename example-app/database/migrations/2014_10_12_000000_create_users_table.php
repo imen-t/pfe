@@ -16,9 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('Mobile')->nullable();
-            $table->string('department')->nullable();
+            $table->string('Department')->nullable();
+            $table->enum('ranking', ['Yellow Belt', 'Green Belt', 'Black Belt','Master Black Belt','others']);
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->nullable()->default(null);;
+            $table->string('password')->nullable()->default(null);
             $table->rememberToken();
             $table->timestamps();
         });

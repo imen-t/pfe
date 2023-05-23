@@ -26,11 +26,11 @@
             <select
                 v-model="resultform.status"
                 class="swal2-input"
-                name="status"
-                id="status"
+                name="status_result"
+                id="status_result"
             >
              <!--<select v-model="selected">-->
-                <option disabled value="">status</option>
+                <option disabled value="status_result">status</option>
                 <option>ON target</option>
                 <option>OFF target</option>
                 
@@ -47,13 +47,12 @@ export default {
     props: ["project_id"],
     data() {
         return {
-            users: [],
             showForm: false,
             resultform: {
-                result: "",
+                result_title: "",
                 Month: "",
                 type:"",
-                status:"",
+                status_result:"",
                 project_id: this.project_id,
             },
         };
@@ -69,13 +68,13 @@ export default {
         },
         submitForm() {
             // console.log("submit");
-            axios.post("/api/storeAction", this.resultform).then((response) => {
+            axios.post("/api/storeResult", this.resultform).then((response) => {
                 this.showForm = false;
                 this.resultform = {
                     result_title: "",
                     Month:"",
                     type:"",
-                    status:"",
+                    status_result:"",
                     user_id: "",
                     project_id: this.project_id,
                 };

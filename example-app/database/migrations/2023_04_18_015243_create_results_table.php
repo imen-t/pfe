@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('result_title')->nullable();; 
             $table->date('Month')->nullable();; 
             $table->enum('type', ['plan', 'Fcst', 'Act'])->nullable();;
-            $table->enum('status-result', ['on targer', 'off target'])->nullable();;
+            $table->enum('status_result', ['on targer', 'off target'])->nullable();;
 
             $table->timestamps();
             

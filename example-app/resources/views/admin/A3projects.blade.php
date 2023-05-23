@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('admin.defaultadmin')
 @section('content')
 
 <div class="col py-3">

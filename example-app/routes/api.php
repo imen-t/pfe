@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ActionController;
+use App\Http\Controllers\ResultController;
+
 use App\Http\Controllers\ProjectController;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -21,6 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('storeAction', [ActionController::class, 'store']);
+Route::post('storeResult', [ResultController::class, 'store']);
+
 Route::get('users', function () {
     return response()->json(User::all());
 });

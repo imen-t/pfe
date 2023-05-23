@@ -14,6 +14,7 @@ use App\Http\Livewire\Multistepform;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,12 +25,13 @@ use App\Http\Livewire\Multistepform;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::post('/projects/add-member', [ProjectController::class, 'addProjectMember'])->name('projects.add-member');
 
 
 Route::get('actions', [ActionController::class, 'index'])->name('actions.index');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
     // return User::find(1);
     // return Project::with(['files','actions','users'])->get();
 });
@@ -61,15 +63,21 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
  */
 Route::resource('projects', ProjectController::class);
 
+Route::get('A3projects', [ProjectController::class, 'index2'])->name('projects.index2');
+
+
 Route::post('projects/{project}/updateBackground', [ProjectController::class, 'updateBackground'])->name('updateBackground');
 Route::post('projects/{project}/updateAnalysis', [ProjectController::class, 'updateAnalysis'])->name('updateAnalysis');
 Route::post('projects/{project}/updateInfo', [ProjectController::class, 'updateInfo'])->name('updateInfo');
 Route::delete('projects/{project}/{user}', [ProjectController::class, 'deleteUser'])->name('projects.member.destroy');
+Route::post('projects/{project}/updateresultcomment', [ProjectController::class, 'updateresultcomment'])->name('updateresultcomment');
+Route::post('projects/{project}/updateReview', [ProjectController::class, 'updateReview'])->name('updateReview');
 
 /**
  * action Routes
  */
 Route::resource('actions', ActionController::class);
+
 Route::post('actions/{action}/updateAction', [ActionController::class, 'updateAction'])->name('actions.updateAction');
 
 /**
@@ -78,7 +86,8 @@ Route::post('actions/{action}/updateAction', [ActionController::class, 'updateAc
 
 Route::resource('results', ResultController::class);
 //Route::post('/results/store', [ResultController::class, 'store'])->name('results.store');
-
+Route::get('results', [ResultController::class, 'index'])->name('results.index');
+Route::post('results/{result}/updateresult', [ResultController::class, 'updateresult'])->name('results.updateresult');
 
 
 /**
@@ -91,12 +100,14 @@ Route::resource('results', ResultController::class);
 Route::resource('/dmaicProjects', DmaicProjectController::class)->except([
     'create'
 ]);
+Route::get('A3projects', [ProjectController::class, 'index2'])->name('dmaicProjects.index2');
+
 
 Route::get('Define/create/{id}', [DmaicProjectController::class, 'create'])->name('dmaicProjects.create');
 
+Route::post('dmaicProjects/{dmaicProject}/updateInfo', [DmaicProjectController::class, 'updateInfo1'])->name('updateInfo1');
 
-Route::post('dmaicProjects/{dmaicProject}/updateInfo', [DmaicProjectController::class, 'updateInfo'])->name('updateInfo');
-// Route::delete('dmaicProjects/{dmaicProject}/{user}', [ProjectController::class, 'deleteUser'])->name('dmaicProjects.member.destroy');
+Route::delete('dmaicProjects/{dmaicProject}/{user}', [ProjectController::class, 'deleteUser'])->name('dmaicProjects.member.destroy');
 
 //define phase
 Route::get('/Define/{dmaicProject}/step1', [DmaicProjectController::class, 'Definestep1'])->name('Define.step1');
@@ -105,7 +116,8 @@ Route::get('/Define/{dmaicProject}/step2', [DmaicProjectController::class, 'Defi
 Route::post('/Define/{dmaicProject}/updatedefine2', [DmaicProjectController::class, 'updatedefine2'])->name('updatedefine2');
 Route::get('/Define/{dmaicProject}/step3', [DmaicProjectController::class, 'Definestep3'])->name('Define.step3');
 Route::post('/Define/{dmaicProject}/updatedefine3', [DmaicProjectController::class, 'updatedefine3'])->name('updatedefine3');
-
+Route::get('/Define/{dmaicProject}/championchecklist', [DmaicProjectController::class, 'definecheck'])->name('checklist.definechack');
+Route::post('/Define/{dmaicProject}/postchampionchecklist', [DmaicProjectController::class, 'storedefinecheck'])->name('storedefinecheck');
 //Measure phase
 
 Route::get('/measure/{dmaicProject}/step1', [DmaicProjectController::class, 'step1'])->name('measure.step1');
@@ -157,7 +169,7 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::resource('users', 'usersController');
     });
-
+    Route::get('/user', [usersController::class, 'create'])->name('admin.users.index');
     Route::get('/user', [usersController::class, 'create'])->name('admin.users.create');
     Route::delete('/user', [usersController::class, 'destroy'])->name('admin.users.destroy');
     Route::post('/users', [usersController::class, 'store'])->name('users.store');

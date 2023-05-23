@@ -3,13 +3,23 @@
 @php
     use App\Models\User;
     use App\Models\Project;
-    use App\Models\DMAICProject;
+    use App\Models\dmaicProject;
 
+    // Get the count of users
     $userCount = User::count();
+
+    // Get the count of a3 projects
     $a3ProjectCount = Project::count();
+
+    // Get the count of dmaic projects
     $dmaicProjectCount = dmaicProject::count();
+
+    // Get the count of projects for each user
+    $userProjectCounts = User::withCount(['projects', 'dmaicProjects'])->get();
+
 @endphp
-<div class="container-fluid" style="overflow-x: hidden;margin-top:10px;">
+<div class="container-fluid" style="overflow-x: hidden; margin-top: 10px;">
+
     <!-- Card stats -->
     <div class="row g-6 mb-6">
         <div class="col-xl-3 col-sm-6 col-12">
@@ -37,7 +47,7 @@
                     <div class="row">
                         <div class="col">
                             <span class="h3 font-semibold text-muted text-sm d-block mb-2">A3 projects</span>
-                            <span class="h3 font-bold mb-0">{{ $a3ProjectCount}}</span>
+                            <span class="h3 font-bold mb-0">{{ $a3ProjectCount }}</span>
                         </div>
                         <div class="col-auto">
                             <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
@@ -61,7 +71,7 @@
                     <div class="row">
                         <div class="col">
                             <span class="h3 font-semibold text-muted text-sm d-block mb-2">Dmaic Projects</span>
-                            <span class="h3 font-bold mb-0">{{$dmaicProjectCount}}</span>
+                            <span class="h3 font-bold mb-0">{{ $dmaicProjectCount }}</span>
                         </div>
                         <div class="col-auto">
                             <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
@@ -81,51 +91,45 @@
         </div>
     </div>
 
-    <div class="row" style="width:1200px;margin-top:30px;">
-  <div class="col-md-6">
-    <div class="box box-info" style="border: solid 2px; border-color:#000; border-radius: 8px; max-width: 100%; overflow-x: auto;">
-      <div class="box-header bg-gradient-orange">
-        <h3 class="box-title text-white">A3 Projects</h3>
-      </div>
-      <div class="box-body table-responsive">
-        <table class="table table-hover table-bordered table-striped" style="font-family: 'Lucida Grande', sans-serif; color: #0c0c0c;">
-          <tr>
-            <th>ID</th>
-            <th>Libelle</th>
-            <th>Chef</th>
-            <th>Status</th>
-            <th>Due</th>
-            <th></th>
-          </tr>
-          <!-- Add your table rows and data here -->
-        </table>
-      </div>
+    <!-- User Projects Table -->
+    <div class="row" style="margin-top: 30px; margin-left:30px">
+    <div class="col-md-12">
+        <div class="card"style="width:920px">
+            <div class="card-header" style="background-color: #FBA51A;">
+                <h4>User Projects</h4>
+            </div>
+            <div class="card-body" >
+            <table id="projectsTable" class="table  table-hover">
+      
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>email</th>
+                            <th>ranking</th>
+                            <th>A3 Projects</th>
+                            <th>Dmaic Projects</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($userProjectCounts as $user)
+                            <tr>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->ranking }}</td>
+                                <td>{{ $user->projects_count }}</td>
+                                <td>{{ $user->dmaic_projects_count }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="col-md-6">
-    <div class="box box-info" style="border: solid 2px; border-color:#000; border-radius: 8px; max-width: 100%; overflow-x: auto;">
-      <div class="box-header bg-gradient-orange">
-        <h3 class="box-title text-white">Dmaic Projects</h3>
-      </div>
-      <div class="box-body table-responsive">
-        <table class="table table-hover table-bordered table-striped" style="font-family: 'Lucida Grande', sans-serif; color: #0c0c0c;">
-          <tr>
-            <th>ID</th>
-            <th>Libelle</th>
-            <th>Chef</th>
-            <th>Status</th>
-            <th>Due</th>
-            <th></th>
-          </tr>
-          <!-- Add your table rows and data here -->
-        </table>
-      </div>
-    </div>
-  </div>
 </div>
 
-@endsection
+   
 
+@endsection
 
 
 

@@ -1,72 +1,103 @@
 @extends('admin.defaultadmin')
 @section('content')
- <div class="card">
-  <div class="card-header">Contactus Page</div>
-  <div class="card-body">
-  <form action="{{ route('users.update', $users->id) }}" method="post">
+
+
+<form action="{{ route('users.update', $users->id) }}" method="post">
        @csrf
        @method("PATCH")
- <div class="form-group">
-          <label for="inputName">Name</label>
-          <input type="text" class="form-control" id="name" name="name"value="{{$users->name}}" required />
-          <small class="form-text text-muted">Please fill your name</small>
-        </div>
-        <!-- End Input Name -->
+<section class="vh-100" style="background-color: #f4f5f7;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex align-items-center h-100">
+      <div class="col col-lg-6 mb-4 mb-lg-0">
+        <div class="card mb-3" style="border-radius: .5rem;">
+          <div class="row g-0">
+            <div class="col-md-4 gradient-custom text-center text-white"
+              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+              <h5>Visteon employee</h5>
+             
+              <i class="far fa-edit mb-5"></i>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body p-4">
+                <h6>Information</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-9 mb-3">
+                    <h6>full name</h6>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="enter name"  value="{{$users->name}}"required />
+                  </div>
+                 
+                </div>
+                <div class="row pt-1">
+                  <div class="col-6 mb-3">
+                    <h6>email</h6>
+                    <input type="email" class="form-control" id="email" name="email" value="{{$users->email}}" placeholder="Enter email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required />
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>phone number</h6>
+                    <input type="text" class="form-control" id="Mobile" name="Mobile" value="{{$users->Mobile}}" placeholder="xxxxxxxxxx"/>
+                  </div>
+                </div>
+                <h6>departments and ranking</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  
+                <label for="role">Department:</label>
+                <input type="text" class="form-control" id="Department" name="Department" value="{{$users->Department}}" placeholder="Department" required />
 
-        <!-- Start Input Email -->
-        <div class="form-group">
-          <label for="inputEmail">Email</label>
-          <input type="email" class="form-control" id="email" name="email" value="{{$users->email}}"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required />
-         
-        </div>
-        <!-- End Input Email -->
+                <label for="role">ranking:</label>
+                <select name="ranking" class="form-select" value="{{$users->ranking}}"  aria-label="Default select example">
+                        <option value="Yellow Belt" selected> Yellow Belt</option>
+                        <option value="Green Belt">Green Belt</option>
+                        <option value=" Black Belt"> Black Belt</option>
+                        <option value=" Master Black Belt"> Master Black Belt</option>
+                        <option value=" others"> others</option>
 
-        <!-- Start Input Telephone -->
-        <div class="form-group">
-          <label for="inputPhone">Phone</label>
-          <input type="text" class="form-control" id="Mobile" name="Mobile" placeholder="xxxxxxxxxx"  />
-        </div>
-        <!-- End Input Telephone -->
-       <label>Password</label>
-        <input type="password" name="password" class="form-control">
-     
-         
-        </div>
-        <!-- End Input Date , Start Time and End Time -->
+                  </select>
+                </div>
+                <h6>role</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                <label for="role">Role</label>
+                    <select name="role" id="role" class="form-control">
+                        <option value="0">User</option>
+                        <option value="1">Admin</option>
+                    </select>
+                </div>
+                <div class="row pt-1">
+                <button class="btn btn-primary " type="submit" value="Save" >Submit</button>
+              </div>
+              </div>
 
-        <!-- Start Check Room Type -->
-        <div class="form-group">
-          <legend class="col-form-label pt-0">role</legend>
-          <div class="form-check form-check-inline">
-            <input type="radio" class="form-check-input" id="inlineRadioType1" name="roomType" value="type1" required />
-            <label class="form-check-label" for="inlineRadioType1">Room 1 (10 People)</label>
+            </div>
           </div>
-          <div class="form-check form-check-inline">
-            <input type="radio" class="form-check-input" id="inlineRadioType2" name="roomType" value="type2" required />
-            <label class="form-check-label" for="inlineRadioType2">Room 2 (20 People)</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input type="radio" class="form-check-input" id="inlineRadioType3" name="roomType" value="type3" required />
-            <label class="form-check-label" for="inlineRadioType3">Room 3 (30 People)</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input type="radio" class="form-check-input" id="inlineRadioType4" name="roomType" value="type4" required />
-            <label class="form-check-label" for="inlineRadioType4">others</label>
-          </div>
-          
         </div>
-        <input type="hidden" name="selectedRoomType" id="selectedRoomType" value="">
-        <!-- End Check Room Type -->
-
-        <hr />
-
-        
-        <!-- Start Submit Button -->
-        <button class="btn btn-primary btn-block col-lg-2" type="submit" value="Save" >Submit</button>
-        <!-- End Submit Button -->
-    </form>
+      </div>
+    </div>
   </div>
- </div>
+</section>  
+
+        <!-- End Submit Button -->
+      </form>
+
+
 @endsection
 
+<style>
+ *{
+  overflow-x: hidden;
 
+  }
+  .gradient-custom {
+/* fallback for old browsers */
+background: #f6d365;
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
+}
+</style>

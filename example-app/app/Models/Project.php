@@ -22,6 +22,9 @@ class Project extends Model
         'commentaire',
         'unresolved_issues',
         'date',
+        'result_comment',
+        'review',
+
     ];
         /**
      * The users that belong to the role.

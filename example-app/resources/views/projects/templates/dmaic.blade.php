@@ -7,7 +7,7 @@
     <div class="card p-3 shadow" style="max-width: 1260px;">
     <div class="col">
        <h2>{{$dmaicProject->projecttitle}}</h2>
-<form method="POST" action="{{route('updateInfo',$dmaicProject->id)}}">
+<form method="POST" action="{{route('updateInfo1',$dmaicProject->id)}}">
     @csrf
 
     <table class="table">
@@ -198,7 +198,44 @@
                 </div>
                 </div>
 
-                <a href="" class="btn btn-danger " style="margin-left: 600px;margin-top:40px;">champion project checklist</a>
+                <a href="{{route('checklist.definechack',$dmaicProject->id)}}" class="btn btn-danger " style="margin-top:40px;">champion project checklist</a>
+                <table class="table table-sm">
+  <thead style="background-color: #E8E9EC;">
+    <tr>
+      <th scope="col">#</th>
+
+      <th scope="col">Milestone</th>
+      <th scope="col">Y/N</th>
+      <th scope="col">comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th scope="row">1</th>
+      <th>project_Charter_Completed:</th>
+      <td>{{$dmaicProject->project_Charter_Completed}}</td>
+      <td>{{$dmaicProject->comment1}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <th>VOC_is_completed:</th>
+
+      <td>{{$dmaicProject->VOC_is_completed}}</td>
+      <td>{{$dmaicProject->comment2}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <th >Stakeholder Analysis and 
+Communications Plan</th>
+
+      <td>{{$dmaicProject->Stakeholder_Analysis_and}}</td>
+      <td>{{$dmaicProject->comment3}}</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
     </div>
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
     <div class="card-body">
@@ -357,6 +394,7 @@
                 </div>
 
                 <a href="" class="btn btn-danger " style="margin-left: 600px;margin-top:40px;">champion project checklist</a>
+
     </div>
     <div class="tab-pane fade" id="nav-improve" role="tabpanel" aria-labelledby="nav-improve-tab">
     <div class="card-body">

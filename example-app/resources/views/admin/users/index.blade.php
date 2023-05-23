@@ -11,17 +11,29 @@
                         <a href="{{ route('users.create') }}"class="btn btn-success btn-sm" title="Add New Student">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
+                    <div class="input-group" style="margin-left:820px; width:max-content;margin-top:-30px;">
+                        <div class="form-outline">
+                            <input type="search" id="search" class="form-control" />
+                        </div>
+                        <button type="button" class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
                         <br/>
                         <br/>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table"  id="projectsTable">
                                 <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>email</th>
                                         <th>Mobile</th>
-                                        <th>Role</th>
+                                        <th>Department</th>
+                                        <th>ranking</th>
+                                        <th>role</th>
+
+
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -31,11 +43,15 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->mobile }}</td>
-                                    <td>{{ $user->mobile }}</td>
+                                    <td>{{ $user->Mobile }}</td>
+                                    <td>{{ $user->Department }}</td>
+                                    <td>{{ $user->ranking }}</td>
+
+                                    <td>{{ $user->role }}</td>
+
 
                                     <td>
-                                        <a href="{{ route('users.show', $user->id) }}" title="View Student"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                       
                                         <a href="{{ route('users.edit', $user->id) }}" title="Edit Student"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                                         <form method="POST" action="{{ url('/user/' . $user->id) }}" accept-charset="UTF-8" style="display:inline">
                                             {{ method_field('DELETE') }}
@@ -54,3 +70,51 @@
         </div>
     </div>
     @endsection
+    <style>
+        *{
+            overflow-x: auto;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    // Handle entries select change event
+    $('#entries').change(function() {
+        var selectedValue = parseInt($(this).val());
+        var rows = $('#projectsTable tbody tr');
+
+        rows.hide(); // Hide all rows
+
+        // Show selected number of rows
+        for (var i = 0; i < selectedValue; i++) {
+            $(rows[i]).show();
+        }
+    });
+
+    // Handle search input keyup event
+    $('#search').on('keyup', function(e) {
+        e.preventDefault();
+        var search_string = $(this).val().toLowerCase();
+        var rows = $('#projectsTable tbody tr');
+
+        rows.hide(); // Hide all rows
+
+        // Show rows that match the search string
+        rows.each(function() {
+            var name = $(this).find('td:nth-child(2)').text().toLowerCase(); // Get the title column text
+            var ranking = $(this).find('td:nth-child(3)').text().toLowerCase(); // Get the location column text
+            var email = $(this).find('td:nth-child(4)').text().toLowerCase(); // Get the project leader column text
+          
+
+            if (
+                name.includes(search_string) ||
+                ranking.includes(search_string) ||
+                email.includes(search_string) 
+            ) {
+                $(this).show();
+            }
+        });
+    });
+});
+
+</script>

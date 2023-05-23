@@ -1,4 +1,5 @@
 <template>
+     <div>
     <a class="btn btn-primary" @click="toggleForm()"> Add Member</a>
     <div v-if="showForm">
         <form action="" @submit.prevent="submitForm()">
@@ -18,6 +19,7 @@
             <button class="btn btn-primary" type="submit">submit</button>
         </form>
     </div>
+</div>
 </template>
 
 <script>
@@ -31,6 +33,9 @@ export default {
             UsersForm: {
                 user_id: "",
                 project_id: this.project_id,
+                dmaic_project_id: this.dmaic_project_id,
+
+                
             },
         };
     },
@@ -50,6 +55,8 @@ export default {
                 this.actionForm = {
                     user_id: "",
                     project_id: this.project_id,
+                    dmaic_project_id: this.dmaic_project_id,
+
                 };
             });
         },

@@ -2,125 +2,101 @@
 @section('content')
 
 
-    <!-- Start Card Body -->
-    <div class="card-body">
-      <!-- Start Form -->
-      <form action="{{ route('users.store') }}" method="post">
+<form action="{{ route('users.store') }}" method="post">
         @csrf
-        <!-- Start Input Name -->
-        <div class="form-group">
-          <label for="inputName">Name</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="enter name" required />
-          <small class="form-text text-muted">Please fill your name</small>
-        </div>
-        <!-- End Input Name -->
+<section class="vh-100" style="background-color: #f4f5f7;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex align-items-center h-100">
+      <div class="col col-lg-6 mb-4 mb-lg-0">
+        <div class="card mb-3" style="border-radius: .5rem;">
+          <div class="row g-0">
+            <div class="col-md-4 gradient-custom text-center text-white"
+              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+              <h5>Visteon employee</h5>
+             
+              <i class="far fa-edit mb-5"></i>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body p-4">
+                <h6>Information</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-9 mb-3">
+                    <h6>full name</h6>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="enter name" required />
+                  </div>
+                 
+                </div>
+                <div class="row pt-1">
+                  <div class="col-6 mb-3">
+                    <h6>email</h6>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required />
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>phone number</h6>
+                    <input type="text" class="form-control" id="Mobile" name="Mobile" placeholder="xxxxxxxxxx"/>
+                  </div>
+                </div>
+                <h6>departments and ranking</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  
+                <label for="role">Department:</label>
+                <input type="text" class="form-control" id="Department" name="Department" placeholder="Department" required />
 
-        <!-- Start Input Email -->
-        <div class="form-group">
-          <label for="inputEmail">Email</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required />
-         
-        </div>
-        <!-- End Input Email -->
+                <label for="role">ranking:</label>
+                <select name="ranking" class="form-select" aria-label="Default select example">
+                        <option value="Yellow Belt" selected> Yellow Belt</option>
+                        <option value="Green Belt">Green Belt</option>
+                        <option value=" Black Belt"> Black Belt</option>
+                        <option value=" Master Black Belt"> Master Black Belt</option>
+                        <option value=" others"> others</option>
 
-        <!-- Start Input Telephone -->
-        <div class="form-group">
-          <label for="inputPhone">Phone</label>
-          <input type="text" class="form-control" id="Mobile" name="Mobile" placeholder="xxxxxxxxxx"  />
-        </div>
-        <!-- End Input Telephone -->
-       <label>Password</label>
-        <input type="password" name="password" class="form-control">
-     
-         
-        </div>
-        <!-- End Input Date , Start Time and End Time -->
+                  </select>
+                </div>
+                <h6>role</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                <label for="role">Role</label>
+                    <select name="role" id="role" class="form-control">
+                        <option value="0">User</option>
+                        <option value="1">Admin</option>
+                    </select>
+                </div>
+                <div class="row pt-1">
+                <button class="btn btn-primary " type="submit" value="Save" >Submit</button>
+              </div>
+              </div>
 
-        <!-- Start Check Room Type -->
-        <div class="form-group">
-          <legend class="col-form-label pt-0">role</legend>
-          <div class="form-check form-check-inline">
-            <input type="radio" class="form-check-input" id="inlineRadioType1" name="roomType" value="type1" required />
-            <label class="form-check-label" for="inlineRadioType1">Room 1 (10 People)</label>
+            </div>
           </div>
-          <div class="form-check form-check-inline">
-            <input type="radio" class="form-check-input" id="inlineRadioType2" name="roomType" value="type2" required />
-            <label class="form-check-label" for="inlineRadioType2">Room 2 (20 People)</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input type="radio" class="form-check-input" id="inlineRadioType3" name="roomType" value="type3" required />
-            <label class="form-check-label" for="inlineRadioType3">Room 3 (30 People)</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input type="radio" class="form-check-input" id="inlineRadioType4" name="roomType" value="type4" required />
-            <label class="form-check-label" for="inlineRadioType4">others</label>
-          </div>
-          
         </div>
-        <input type="hidden" name="selectedRoomType" id="selectedRoomType" value="">
-        <!-- End Check Room Type -->
+      </div>
+    </div>
+  </div>
+</section>  
 
-        <hr />
-
-        
-        <!-- Start Submit Button -->
-        <button class="btn btn-primary btn-block col-lg-2" type="submit" value="Save" >Submit</button>
         <!-- End Submit Button -->
       </form>
-      <!-- End Form -->
-    </div>
-    <!-- End Card Body -->
-  </div>
-  <!-- End Card -->
-  <footer>
-    <div class="my-4 text-muted text-center">
-      <p>© My Company</p>
-    </div>
-  </footer>
 
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
- 
 
- </body>
 @endsection
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-  <!-- Start Scritp for Form -->
-  <script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function() {
-      'use strict';
-      window.addEventListener('load', function() {
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.getElementsByClassName('needs-validation');
-        // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function(form) {
-          form.addEventListener('submit', function(event) {
-            if (form.checkValidity() === false) {
-              event.preventDefault();
-              event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-          }, false);
-        });
-      }, false);
-    })();
-  </script>
-  <script>
-  // Get all room type radio buttons
-  const roomTypeRadios = document.querySelectorAll('input[name="roomType"]');
+<style>
+ *{
+  overflow-x: hidden;
 
-  // Add event listener to update hidden field value when a room type is selected
-  roomTypeRadios.forEach((radio) => {
-    radio.addEventListener('change', (event) => {
-      const selectedValue = event.target.value;
-      document.getElementById('selectedRoomType').value = selectedValue;
-    });
-  });
-  
-</script>
-  <!-- End Scritp for Form -->
+  }
+  .gradient-custom {
+/* fallback for old browsers */
+background: #f6d365;
 
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
+}
+</style>

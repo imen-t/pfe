@@ -4,6 +4,7 @@
         <form action="" @submit.prevent="submitForm()">
             <label for="title" class="form-label">Title</label>
             <input v-model="actionForm.title" id="title" class="swal2-input" />
+
             <label for="country">Owner:</label>
             <select
                 v-model="actionForm.user_id"
@@ -15,13 +16,16 @@
                     {{ user.name }}
                 </option>
             </select>
-
-           
+            <label for="impact">impact:</label>
+            <input v-model="actionForm.impact" id="impact" class="swal2-input" />
+            <label for="impact">due DAte:</label>
+            <input v-model="actionForm.due_date" type="date" id="due_date" class="swal2-input" />
+            <label for="impact">Dmaic:</label>
                 <input
                     v-model="actionForm.is_complex"
                     id="is_complex"
                     type="checkbox"
-                    class=" swal2-input"
+                    class=" swal1-input"
                     true-value="1"
                     false-value="0"
                 />
@@ -44,6 +48,9 @@ export default {
             actionForm: {
                 title: "",
                 user_id: "",
+                due_date:"",
+                start_date:"",
+                impact:"",
                 is_complex: 0,
                 project_id: this.project_id,
             },
@@ -65,6 +72,9 @@ export default {
                 this.actionForm = {
                     title: "",
                     user_id: "",
+                    due_date:"",
+                    start_date:"",
+                    impact:"",
                     is_complex: "",
                     project_id: this.project_id,
                 };

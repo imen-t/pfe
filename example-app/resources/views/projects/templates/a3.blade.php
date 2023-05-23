@@ -157,6 +157,8 @@
                         <th scope="col">Impact</th>
                         <th scope="col">Owner</th>
                         <th scope="col">Due date</th>
+                        <th scope="col">progress</th>
+
                         <!-- <th scope="col">Due date</th> -->
                         <th scope="col">Action</th>
 
@@ -171,9 +173,12 @@
                             <input id="is_complex" type="checkbox" class=" swal2-input" {{$action->is_complex ? 'checked' : ''}} disabled/>
                         </td>
                         <td>{{$action->title}}</td>
-
                         <td>{{$action->impact}}</td>
+                        
+
                         <td>{{$action->user->name}}</td>
+                        <td>{{$action->due_date}}</td>
+
                         <!-- <td>{{$action->due_date}}</td> -->
                         <td>
                             <!-- {{$action->created_at}} -->
@@ -206,7 +211,7 @@
     </div>
 
     <!-- Results  -->
-    <div class="row project-actions">
+    <div class="row project-results">
         <h3 class="text-center">Results</h3>
         <div class="col">
             <result-component :project_id="{{$project->id}}"></result-component>
@@ -256,7 +261,44 @@
             </table>
         </div>
     </div>
+    <div class="row">
+        <div class="col-12  mb-4">
 
+           
+
+
+                <form method="post" action="{{route('updateresultcomment',$project->id)}}">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="result_comment" class="form-label"> result comments</label>
+                        <textarea name="result_comment" value="{{old('result_comment', $project->result_comment)}}" type="result_comment" class="form-control" id="result_comment"></textarea>
+                    </div>
+                   
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            
+
+        </div>
 </div>
+
+<div class="row justify-content-center">
+        <div class="col-9 ">
+
+            <div class="card p-4">
+                <h3 class="card-title text-center">Review/Follow up</h3>
+
+
+                <form method="post" action="{{route('updateReview',$project->id)}}">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="review" class="form-label">review/follow up:</label>
+                        <textarea name="review" value="{{old('review', $project->review)}}" type="text" class="form-control" id="review" cols="25" rows="6" ></textarea>
+                    </div>
+                    
+
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+
 </div>
 @endsection

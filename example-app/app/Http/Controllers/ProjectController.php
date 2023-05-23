@@ -20,6 +20,12 @@ class ProjectController extends Controller
         // return response()->json($projects);
         return view('projects.a3.list', compact('projects'));
     }
+    public function index2()
+    {
+        $projects = Project::all();
+        // return response()->json($projects);
+        return view('admin.A3projects', compact('projects'));
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -162,9 +168,31 @@ class ProjectController extends Controller
         //     "path" =>  $filePath,
         //     "project_id" => $project->id
         // ]);
-        return response()->json($project);
+        return redirect()->back();
     }
+    public function updateresultcomment(Request $request, Project $project)
+    {
+        $request->validate([
+            'result_comment' => 'required',
+           
+        ]);
 
+        $project->update($request->all());
+       
+        return redirect()->back();
+    }
+    public function updateReview(Request $request, Project $project)
+    {
+        $request->validate([
+            'review' => 'required',
+           
+        ]);
+
+        $project->update($request->all());
+       
+        return redirect()->back();
+    }
+    
     public function deleteUser(Project $project, User $user)
     {
         // $projectUser = ProjectUser::where(['project_id' => $project->id])->where(['user_id' => $user->id])->first();

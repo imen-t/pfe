@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\result;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ResultController extends Controller
@@ -12,8 +13,7 @@ class ResultController extends Controller
      */
     public function index()
     {
-        $result = result::all();
-        return response()->json($result);
+        return result::all();
     }
 
     /**
@@ -31,9 +31,10 @@ class ResultController extends Controller
     {
         $request->validate([
             'result_title'=> 'required',
-             'Month'=> 'required',
-             'type'=> 'required',
-            'status' => 'required',
+            //  'Month'=> 'required',
+            //  'type'=> 'required',
+            // 'status_result' => 'required',
+        
 
         ]);
 
@@ -66,7 +67,7 @@ class ResultController extends Controller
      public function update(Request $request, result $result)
      {
          $result->update($request->all());
-         return response()->json(['message' => 'action updated successfully']);
+         return response()->json(['message' => 'results updated successfully']);
      }
      public function updateresult(Request $request, result $result)
     {

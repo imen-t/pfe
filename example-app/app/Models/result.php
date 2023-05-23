@@ -15,7 +15,7 @@ class result extends Model
         'Month',
         'type',
         'status',
-        'is_complex',
+        'status_result',
         'user_id',
         'project_id',
     ];

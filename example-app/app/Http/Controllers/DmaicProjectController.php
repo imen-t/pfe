@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Action;
 use App\Models\dmaicProject;
 use App\Models\User;
+use App\Models\checklist;
+
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Notifications\ProjectMemberAddedNotification;
@@ -22,6 +24,12 @@ class DmaicProjectController extends Controller
 
 
         return view('projects.dmaic.list', compact('projects'));
+    }
+    public function index2()
+    {
+        $projects = dmaicProject::all();
+
+        return view('admin.Dmaicprojects', compact('projects'));
     }
     public function create($id)
     {
@@ -481,21 +489,16 @@ class DmaicProjectController extends Controller
         ]);
     }
 
-    public function updateInfo1(Request $request,string $id): RedirectResponse
+    public function updateInfo1(Request $request, dmaicProject $dmaicProject)
     {
-        $validatedData = $request->validate([
-            // Add validation rules for step 3 inputs
+        // var_dump($request->location);
+        $request->validate([
             'projectlocation' => 'required',
-           
-
-
         ]);
 
-        $dmaicProject = dmaicProject::find($id);
-        $input = $request->all();
-        $dmaicProject->update($input);
+        $dmaicProject->update($request->all());
+        // return response()->json(['message' => 'Project updated successfully']);
         return redirect()->back();
-     
     }
     public function deleteUser(dmaicProject $dmaicProject, User $user)
     {
@@ -531,13 +534,31 @@ class DmaicProjectController extends Controller
 
         // Send notification to user
         
-        $user = User::find($request->user_id);
-        $user->notify(new ProjectMemberAddedNotification($dmaicProject));
+        // $user = User::find($request->user_id);
+        // $user->notify(new ProjectMemberAddedNotification($dmaicProject));
 
-        return redirect()->back();
+         return redirect()->back();
         // // return response()->json(['message' => 'Project created successfully']);
         // return redirect()->route('projects.edit', ['project' => $project->id]);
     }
-    
+    public function definecheck()
+    {
+        $dmaicProject = dmaicProject::first();
+        return view('checklist.definechack', compact('dmaicProject'));
+    }
+
+    public function storedefinecheck(Request $request, string $id): RedirectResponse
+    {
+        $request->validate([
+            'project_Charter_Completed' => 'required',
+
+        ]);
+
+        $dmaicProject = dmaicProject::find($id);
+        $input = $request->all();
+        $dmaicProject->update($input);
+        return redirect()->route('dmaicProjects.edit', ['dmaicProject' => $dmaicProject]);
+
+    }
        
 }
