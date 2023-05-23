@@ -41,7 +41,7 @@
         <h3 class="text-center">Team Members</h3>
         <div class="col">
 
-            <add-member :dmaic_project_id="{{$dmaicProject->id}}"></add-member>
+            <add-dmaic-member :dmaic_project_id="{{$dmaicProject->id}}"></add-dmaic-member>
             <table class="table">
                 <thead>
                     <tr>

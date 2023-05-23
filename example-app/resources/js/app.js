@@ -27,6 +27,8 @@ app.component('example-component', ExampleComponent);
 
 import AddMember from './components/AddMember.vue';
 app.component('add-member', AddMember);
+import AddDmaicMember from './components/AddDmaicMember.vue';
+app.component('add-dmaic-member', AddDmaicMember);
 
 import Result from './components/Result.vue';
 app.component('result-component', Result);
