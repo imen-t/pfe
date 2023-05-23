@@ -6,7 +6,7 @@ use App\Models\Action;
 use App\Models\dmaicProject;
 use App\Models\User;
 use App\Models\checklist;
-
+use App\Models\DmaicProjectUser;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Notifications\ProjectMemberAddedNotification;
@@ -525,7 +525,7 @@ class DmaicProjectController extends Controller
 
         ]);
 
-        DB::table('dmaic_project_user')->create([
+        DmaicProjectUser::create([
             'user_id' => $request->user_id,
             'dmaic_project_id' => $request->dmaic_project_id
         ]);

@@ -24,15 +24,15 @@
             </select>
             <label for="country">status</label>
             <select
-                v-model="resultform.status"
+                v-model="resultform.status_result"
                 class="swal2-input"
                 name="status_result"
                 id="status_result"
             >
              <!--<select v-model="selected">-->
-                <option disabled value="status_result">status</option>
-                <option>ON target</option>
-                <option>OFF target</option>
+                <option disabled value="">status</option>
+                <option>on targer</option>
+                <option>off target</option>
                 
                 
             </select>

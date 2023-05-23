@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\ActionController;
-use App\Http\Controllers\ResultController;
-
-use App\Http\Controllers\ProjectController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\ActionController;
+use App\Http\Controllers\ResultController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\DmaicProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,4 @@ Route::get('users', function () {
 });
 
 Route::post('addProjectMember', [ProjectController::class, 'addProjectMember']);
+Route::post('addDmaicMember', [DmaicProjectController::class, 'addProjectMember']);

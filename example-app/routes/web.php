@@ -107,7 +107,7 @@ Route::get('Define/create/{id}', [DmaicProjectController::class, 'create'])->nam
 
 Route::post('dmaicProjects/{dmaicProject}/updateInfo', [DmaicProjectController::class, 'updateInfo1'])->name('updateInfo1');
 
-Route::delete('dmaicProjects/{dmaicProject}/{user}', [ProjectController::class, 'deleteUser'])->name('dmaicProjects.member.destroy');
+Route::delete('dmaicProjects/{dmaicProject}/{user}', [DmaicProjectController::class, 'deleteUser'])->name('dmaicProject.member.destroy');
 
 //define phase
 Route::get('/Define/{dmaicProject}/step1', [DmaicProjectController::class, 'Definestep1'])->name('Define.step1');

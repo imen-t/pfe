@@ -14,10 +14,14 @@ return new class extends Migration
         Schema::create('results', function (Blueprint $table) {
             $table->id();
             $table->string('result_title')->nullable();; 
-            $table->date('Month')->nullable();; 
+            $table->date('Month')->nullable(); 
             $table->enum('type', ['plan', 'Fcst', 'Act'])->nullable();;
             $table->enum('status_result', ['on targer', 'off target'])->nullable();;
-
+                // Foreign keys
+            $table->foreignId('project_id')
+                ->constrained('projects')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
             
             

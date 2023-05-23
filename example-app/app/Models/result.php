@@ -14,9 +14,7 @@ class result extends Model
         'result_title',
         'Month',
         'type',
-        'status',
         'status_result',
-        'user_id',
         'project_id',
     ];
 
