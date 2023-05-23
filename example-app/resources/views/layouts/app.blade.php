@@ -93,6 +93,7 @@
                         </a>
                     </li>
                     
+                    
                     <li class="nav-link">
                         <a href="{{route('projects.index')}}" class="nav-link px-0 align-middle">
                         <i class='bx bx-list-check' ></i> <span class="ms-1 d-none d-sm-inline">A3 Projects</span></a>

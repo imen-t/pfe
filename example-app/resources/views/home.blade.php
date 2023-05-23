@@ -35,7 +35,7 @@
 
     <!-- Card stats -->
     <div class="row g-6 mb-6">
-        <div class="col-xl-3 col-sm-6 col-12">
+        <div class="col-xl-3 col-sm-6 col-12" style="width: 350px;">
             <div class="card shadow border-0">
                 <div class="card-body">
                     <div class="row">
@@ -54,7 +54,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-sm-6 col-12">
+        <div class="col-xl-3 col-sm-6 col-12" style="width: 350px;">
             <div class="card shadow border-0">
                 <div class="card-body">
                     <div class="row">
@@ -78,7 +78,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-sm-6 col-12">
+        <div class="col-xl-3 col-sm-6 col-12" style="width: 350px;">
             <div class="card shadow border-0">
                 <div class="card-body">
                     <div class="row">
