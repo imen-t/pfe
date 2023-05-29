@@ -26,7 +26,9 @@
                         <textarea name="scope_the_project" value="{{old('scope_the_project', $dmaicProject->scope_the_project)}}" type="scope_the_project" class="form-control" id="scope_the_project"></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Next</button>
+                    <button type="submit" class="btn btn-primary" style="margin-left:600px;">Next</button>
+                    <button type="submit" class="btn btn-danger" style="margin-top:-70px;">Close</button>
+
                     </div>
                     </div>
                     </div>

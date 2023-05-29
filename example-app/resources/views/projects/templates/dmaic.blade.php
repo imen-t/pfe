@@ -15,8 +15,8 @@
             <tr>
                 <th scope="col">Location</th>
                 <th scope="col">project leader</th>
-                <th scope="col">Enterproj</th>
                 <th scope="col">Date</th>
+                <th scope="col">Enterproj</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -27,7 +27,7 @@
                 <td><input name="dmaic_project_leaders" value="{{old('dmaic_project_leaders', $dmaicProject->dmaic_project_leaders)}}" type="text" class="form-control" id="dmaic_project_leaders" />
                    
                     <td><input name="project_date" value="{{old('project_date', $dmaicProject->project_date)}}" type="date" class="form-control" id="project_date" />
-                    <td><input name="Enterproj" value="{{old('Enterproj', $dmaicProject->Enterproj)}}" type="date" class="form-control" id="Enterproj" />
+                    <td><input name="Enterproj" value="{{old('Enterproj', $dmaicProject->Enterproj)}}" type="text" class="form-control" id="Enterproj" />
 
                 <td> <button type="submit" class="btn btn-primary">Update</button>
                 </td>
@@ -57,7 +57,7 @@
                         <td> {{ $user->name }}</td>
                         <td> {{ $user->email }}</td>
                         <td>
-                            <form method="POST" action="{{ route('dmaicProject.member.destroy',['dmaicProject' => $dmaicProject->id,'user' => $user->id] ) }}">
+                            <form method="POST" action="{{ route('dmaicProjects.member.destroy',['dmaicProject' => $dmaicProject->id,'user' => $user->id] ) }}">
                                 @method('delete')
                                 @csrf
                                 <button type="submit" class="btn btn-danger btn-icon">

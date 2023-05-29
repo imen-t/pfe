@@ -5,7 +5,7 @@
 <div class="col py-3 ">
     <!-- Details -->
     <div class="row project-detail">
-        <h3 class="text-center">{{$project->title}}</h3>
+        <h3 class="text-center">Title:"{{$project->title}}"</h3>
         <div class="col">
 
             <form method="POST" action="{{route('updateInfo',$project->id)}}">
@@ -89,7 +89,7 @@
         <div class="col-12 col-md-6 mb-4">
 
             <div class="card p-4">
-                <h3 class="card-title">Background</h3>
+                <h3 class="card-title">1-Background</h3>
 
 
                 <form method="post" action="{{route('updateBackground',$project->id)}}">
@@ -114,7 +114,7 @@
         </div>
         <div class="col-12 col-md-6">
             <div class="card p-4">
-                <h3 class="card-title">Analysis</h3>
+                <h3 class="card-title">2-Analysis</h3>
 
 
                 <form method="post" action="{{route('updateAnalysis',$project->id)}}">
@@ -141,13 +141,13 @@
 
     <!-- Action plan -->
     <div class="row project-actions mb-4">
-        <h3 class="text-center">Action plan</h3>
+        <h3 class="text-center">3-Action plan</h3>
         <div class="col">
 
             <!-- start Modal -->
 
-            <example-component :project_id="{{$project->id}}"></example-component>
-
+            <example-component   :project_id="{{$project->id}}" ></example-component>
+            
 
             <table class="table">
                 <thead>
@@ -212,7 +212,7 @@
 
     <!-- Results  -->
     <div class="row project-results">
-        <h3 class="text-center">Results</h3>
+        <h3 class="text-center">4-Results</h3>
         <div class="col">
             <result-component :project_id="{{$project->id}}"></result-component>
             <table class="table">
@@ -236,6 +236,16 @@
                         <td>{{$result->Month}}</td>
                         <td>{{$result->type}}</td>
                         <td>{{$result->status}}</td>
+                        <td><a class="btn btn-warning" href="{{ route('results.edit', $result->id ) }}"> Edit </a>
+
+
+<form method="POST" action="{{ route('results.destroy', $result->id ) }}">
+    @method('delete')
+    @csrf
+    <button type="submit" class="btn btn-danger btn-icon">
+        Delete
+    </button>
+</form></td>
 
                         <!-- <td>Mark</td>
                         <td>Otto</td>
@@ -285,7 +295,7 @@
         <div class="col-9 ">
 
             <div class="card p-4">
-                <h3 class="card-title text-center">Review/Follow up</h3>
+                <h3 class="card-title text-center">5-Unresolved issues</h3>
 
 
                 <form method="post" action="{{route('updateReview',$project->id)}}">
@@ -302,3 +312,4 @@
 
 </div>
 @endsection
+<script src="{{ asset('js/app.js') }}" defer></script> 

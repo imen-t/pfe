@@ -31,9 +31,9 @@ class ResultController extends Controller
     {
         $request->validate([
             'result_title'=> 'required',
-            //  'Month'=> 'required',
-            //  'type'=> 'required',
-            // 'status_result' => 'required',
+             'Month'=> 'required',
+             'type'=> 'required',
+            'status_result' => 'required',
         
 
         ]);
@@ -58,7 +58,7 @@ class ResultController extends Controller
      */
     public function edit(result $result)
     {
-        //
+        return view('results.edit',compact('result'));
     }
 
     /**

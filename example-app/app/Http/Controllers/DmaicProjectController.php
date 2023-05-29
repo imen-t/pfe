@@ -25,12 +25,14 @@ class DmaicProjectController extends Controller
 
         return view('projects.dmaic.list', compact('projects'));
     }
-    public function index2()
-    {
-        $projects = dmaicProject::all();
+    
+  public function index2()
+  {
+      $dmaicprojects = dmaicProject::all();
+  
+      return view('admin.Dmaicprojects', compact('dmaicprojects'));
+  }
 
-        return view('admin.Dmaicprojects', compact('projects'));
-    }
     public function create($id)
     {
         $action = Action::find($id);
@@ -461,16 +463,7 @@ class DmaicProjectController extends Controller
     // }
 
 
-    // /**
-    //  * Remove the specified resource from storage.
-    //  */
-    // public function destroy(dmaicProject $dmaicProject)
-    // {
-    //     $dmaicProject->delete();
-    //     $dmaicProject->users();
-    //     return redirect()->back();
-    //     // return response()->json(['message' => 'Project deletted successfully']);
-    // }
+    
     public function search(Request $request)
     {
         

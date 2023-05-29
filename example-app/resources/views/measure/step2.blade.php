@@ -55,10 +55,10 @@
 
             </div>
            </div>
-
+           <button type="submit" class="btn btn-primary" style="margin-left: 600px;">Next</button>
         </div>
 
-           <button type="submit" class="btn btn-primary" style="margin-left: 600px;">Next</button>
+           
 
 </form>
 @endsection

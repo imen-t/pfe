@@ -90,17 +90,18 @@
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     
                     <li class="nav-link">
-                        <a href="dashboard"  class="nav-link px-0 align-middle">
+                        <a href="{{route('admin.dashboard')}}"  class="nav-link px-0 align-middle">
                         <i class='bx bxs-dashboard' ></i><span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
                     </li>
                     <li class="nav-link">
-                        <a href="{{route('projects.index')}}"  class="nav-link px-0 align-middle">
+                        <a href="{{route('projects.index2')}}"  class="nav-link px-0 align-middle">
                         <i class='bx bxs-dashboard' ></i><span class="ms-1 d-none d-sm-inline">A3 Projects</span> </a>
                     </li>
                     <li class="nav-link">
-                        <a href="{{route('dmaicProjects.index')}}"  class="nav-link px-0 align-middle">
+                        <a href="{{route('dmaicProjects.index2')}}"  class="nav-link px-0 align-middle">
                         <i class='bx bxs-dashboard' ></i><span class="ms-1 d-none d-sm-inline">Dmaic Projects</span> </a>
                     </li>
+                   
                     <li class="nav-link">
                         <a href="{{route('users.index')}}"  class="nav-link px-0 align-middle">
                         <i class='bx bxs-dashboard' ></i><span class="ms-1 d-none d-sm-inline">Users</span> </a>
@@ -140,4 +141,3 @@
    </body>
 
 </html>
-

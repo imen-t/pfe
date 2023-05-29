@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ActionController;
+use App\Http\Controllers\dashboard;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\DmaicProjectController;
@@ -63,7 +64,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
  */
 Route::resource('projects', ProjectController::class);
 
-Route::get('A3projects', [ProjectController::class, 'index2'])->name('projects.index2');
+Route::get('DMAIC', [ProjectController::class, 'index2'])->name('projects.index2');
 
 
 Route::post('projects/{project}/updateBackground', [ProjectController::class, 'updateBackground'])->name('updateBackground');
@@ -79,6 +80,7 @@ Route::post('projects/{project}/updateReview', [ProjectController::class, 'updat
 Route::resource('actions', ActionController::class);
 
 Route::post('actions/{action}/updateAction', [ActionController::class, 'updateAction'])->name('actions.updateAction');
+Route::post('results/{result}/updateresult', [ActionController::class, 'updateresult'])->name('results.updateresult');
 
 /**
  * Project Routes
@@ -100,14 +102,14 @@ Route::post('results/{result}/updateresult', [ResultController::class, 'updatere
 Route::resource('/dmaicProjects', DmaicProjectController::class)->except([
     'create'
 ]);
-Route::get('A3projects', [ProjectController::class, 'index2'])->name('dmaicProjects.index2');
+Route::get('A3projects', [DmaicProjectController::class, 'index2'])->name('dmaicProjects.index2');
 
 
 Route::get('Define/create/{id}', [DmaicProjectController::class, 'create'])->name('dmaicProjects.create');
 
 Route::post('dmaicProjects/{dmaicProject}/updateInfo', [DmaicProjectController::class, 'updateInfo1'])->name('updateInfo1');
 
-Route::delete('dmaicProjects/{dmaicProject}/{user}', [DmaicProjectController::class, 'deleteUser'])->name('dmaicProject.member.destroy');
+Route::delete('dmaicProjects/{dmaicProject}/{user}', [DmaicProjectController::class, 'deleteUser'])->name('dmaicProjects.member.destroy');
 
 //define phase
 Route::get('/Define/{dmaicProject}/step1', [DmaicProjectController::class, 'Definestep1'])->name('Define.step1');
@@ -163,9 +165,7 @@ Route::get('/user', [ProjectController::class, 'search'])->name('search.projects
 Route::group(['middleware' => 'auth', 'prefix' => 'user', 'as' => 'user.'], function () {   });
 //admin
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    Route::get('/dashboard', [dashboard::class, 'index'])->name('admin.dashboard');
     Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::resource('users', 'usersController');
     });
@@ -176,3 +176,4 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::patch('/user/{id}', [usersController::class, 'update'])->name('users.update');
  
 });
+

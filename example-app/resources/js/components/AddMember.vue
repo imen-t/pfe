@@ -33,7 +33,7 @@ export default {
             UsersForm: {
                 user_id: "",
                 project_id: this.project_id,
-                dmaic_project_id: this.dmaic_project_id,
+               
 
                 
             },
@@ -55,7 +55,7 @@ export default {
                 this.actionForm = {
                     user_id: "",
                     project_id: this.project_id,
-                    dmaic_project_id: this.dmaic_project_id,
+                   
 
                 };
             });
